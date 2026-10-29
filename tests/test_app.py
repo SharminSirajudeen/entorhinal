@@ -595,7 +595,7 @@ def test_each_long_example_is_a_whole_stale_life_with_both_recorded_answers(path
     assert seed["source"].startswith("STALE scenario ") and seed["sessions"] == 50
     uid = seed["source"].split()[2]
     flat, ours = (next(r for r in run_rows(c) if (r["uid"], r["dim"]) == (uid, "dim3_query"))
-                  for c in ("baseline", "ours"))
+                  for c in ("baseline-super", "ours"))
     assert seed["flat"] == {"answer": flat["response"], "correct": False} and flat["correct"] is False
     assert seed["ours"]["answer"]["text"] == ours["response"] and seed["ours"]["correct"] is ours["correct"] is True
     assert all(facts[s["fact_id"]].status == "stale" for s in seed["ours"]["answer"]["premise_report"]["stale"])
@@ -615,12 +615,16 @@ def run_cells(condition: str) -> list[int]:
 
 def test_the_page_states_the_measured_run():
     html = (STATIC / "index.html").read_text()
-    ours, flat = run_cells("ours"), run_cells("baseline")
-    for name, cells in (("ours", ours), ("flat", flat)):
-        row = "".join(f"<td>{c}/6</td>" for c in cells) + f"<td>{sum(cells)}/36</td>"
+    runs = {"flat": "baseline", "super": "baseline-super", "ultra": "baseline-ultra", "ours": "ours"}
+    cells = {name: run_cells(condition) for name, condition in runs.items()}
+    for name, got in cells.items():
+        row = "".join(f"<td>{c}/6</td>" for c in got) + f"<td>{sum(got)}/36</td>"
         assert f'<tr data-row="{name}">' in html and row in html.split(f'<tr data-row="{name}">')[1].split("</tr>")[0]
-    assert f'<b data-stat="ours">{sum(ours)}/36</b>' in html and f'<b data-stat="flat">{sum(flat)}/36</b>' in html
-    assert f'<b data-stat="pr">{ours[1] + ours[4]}/12</b>' in html and f"against {flat[1] + flat[4]}/12" in html
+    for name in ("ours", "super", "ultra"):
+        assert f'<b data-stat="{name}">{sum(cells[name])}/36</b>' in html
+    pr = {name: got[1] + got[4] for name, got in cells.items()}
+    assert f'<b data-stat="pr">{pr["ours"]}/12</b>' in html
+    assert f"against {pr['super']}/12 for Super and {pr['ultra']}/12 for Ultra" in html
 
 
 def test_the_page_shows_both_recorded_answers_and_says_they_are_recorded():
@@ -629,7 +633,7 @@ def test_the_page_shows_both_recorded_answers_and_says_they_are_recorded():
     assert ("Both answers were recorded in our STALE benchmark run and marked by the same judge: Nemotron 3 Ultra "
             "with STALE's own prompt.") in html
     assert "showAnswer(x.ours.answer, $('ours-report'), $('ours-text'))" in js
-    assert "$('flat-text').textContent = x.flat.answer;" in js
+    assert "prose($('flat-text'), x.flat.answer);" in js
 
 
 def test_the_page_states_the_codes_own_limits():

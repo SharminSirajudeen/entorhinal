@@ -12,6 +12,7 @@ import pytest
 from bench import judge as judge_mod
 from bench import run as bench_run
 from bench.stale import load_stale, sample
+from life import llm
 from life.constants import LIGHTNING, SUPER, ULTRA
 from life.types import Answer, Instance, PremiseReport, Session
 
@@ -148,6 +149,29 @@ def test_baseline_asks_lightning_once_per_dimension_and_prices_each_call():
     assert {d: c for d, (_, c) in got.items()} == {d: pytest.approx(0.06) for d in DIMS}
 
 
+@pytest.mark.parametrize("condition, model, price", [("baseline-super", SUPER, 0.30), ("baseline-ultra", ULTRA, 1.00)])
+def test_a_larger_baseline_reads_with_reasoning_on_and_room_to_reason(condition, model, price):
+    calls = []
+
+    def chat(model, messages, **kw):
+        calls.append((model, kw))
+        return "a", {"prompt_tokens": MILLION}
+    got = bench_run.baseline(instance(), chat, condition)
+    assert calls == [(model, {"think": True, "max_tokens": 16000})] * 3
+    assert {d: c for d, (_, c) in got.items()} == {d: pytest.approx(price) for d in DIMS}
+
+
+def test_a_cut_off_baseline_reply_gets_twice_the_room_once_then_counts_as_no_answer():
+    calls = []
+
+    def cut(model, messages, **kw):
+        calls.append(kw["max_tokens"])
+        raise llm.Truncated(model, {"prompt_tokens": MILLION})
+    got = bench_run.baseline(instance(), cut, "baseline-ultra")
+    assert calls == [16000, 32000] * 3
+    assert got == {d: ("", pytest.approx(2.00)) for d in DIMS}  # both cut calls priced: 2 x 1M input x $1
+
+
 def test_ours_ingests_non_empty_sessions_in_order_then_answers_each_query_from_that_store():
     ingested, asked = [], []
 
@@ -173,11 +197,15 @@ def test_projection_is_hand_derived_per_condition():
     # baseline: 3 x 13.25 x $0.06 + 3 x 4000 x $0.24 = 2,882.385 -> 27,882.385 micro-dollars
     # ours (S6 on Super): 13.25 x $0.30 + (3 + 1 session) x 4000 x $0.90 = 14,403.975 -> 39,403.975 micro-dollars
     # ours-ultra: 13.25 x $1 + (3 + 1 session) x 4000 x $3 = 48,013.25 -> 73,013.25 micro-dollars
+    # baseline-super: 3 x 13.25 x $0.30 + 3 x 16000 x $0.90 = 43,211.925 -> 68,211.925 micro-dollars
+    # baseline-ultra: 3 x 13.25 x $1 + 3 x 16000 x $3 = 144,039.75 -> 169,039.75 micro-dollars
     inst = instance(sessions=[[{"role": "user", "content": "hi"}]])
     assert len(bench_run.history(inst)) == 53
     assert bench_run.project([inst], "baseline") == pytest.approx(0.027882385)
     assert bench_run.project([inst], "ours") == pytest.approx(0.039403975)
     assert bench_run.project([inst], "ours-ultra") == pytest.approx(0.07301325)
+    assert bench_run.project([inst], "baseline-super") == pytest.approx(0.068211925)
+    assert bench_run.project([inst], "baseline-ultra") == pytest.approx(0.16903975)
 
 
 def test_rows_carry_the_judge_model_and_split_the_judge_cost():

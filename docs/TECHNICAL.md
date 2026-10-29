@@ -30,8 +30,9 @@ long user histories around both kinds and asks three questions per scenario:
 | PR, premise resistance | Does it refuse a question that rests on the outdated fact? |
 | IPA, implicit policy adaptation | Does it plan for the user's new situation? |
 
-In our measured run, Nemotron 3.5 Lightning reading the user's whole history in one prompt (STALE's own baseline)
-answered 2 of 36 such questions correctly, and none of the 12 premise-resistance questions.
+In our measured run, reading the user's whole history in one prompt (STALE's own setup), Nemotron 3.5 Lightning
+answered 2 of 36 such questions correctly, and Nemotron 3 Super and Nemotron 3 Ultra, both with reasoning on, 6 each.
+Of the 12 premise-resistance questions, Lightning and Super refused none and Ultra one.
 
 ## 2. Approach
 
@@ -191,7 +192,7 @@ because of which); the web app turns those lines into the live pipeline view.
   |---|---|---|---|
   | Nemotron 3.5 Lightning | 0.06 | 0.03 | 0.24 |
   | Nemotron 3 Super | 0.30 | 0.06 | 0.90 |
-  | Nemotron 3 Ultra (benchmark judge only) | 1.00 | 0.12 | 3.00 |
+  | Nemotron 3 Ultra (benchmark judge and baseline only) | 1.00 | 0.12 | 3.00 |
 
 - **Replay cache:** a response can be recorded under the SHA-256 of its exact request body. With `REPLAY=1`, a missing
   recording raises instead of calling the network, so the test suite can never spend and every benchmark number can be
@@ -244,8 +245,9 @@ The hosted demo pays for its visitors' model calls, so it refuses new work once 
 
 `app/examples/*.json` hold three whole STALE scenarios (50 sessions each, about 700,000 characters of chat) as this
 pipeline built them during the measured run: 464, 535 and 481 facts, of which 18, 15 and 25 are stale. Each file also
-holds the scenario's planning question and both answers the run recorded to it: Nemotron 3.5 Lightning reading the
-whole history (judged wrong on all three) and this memory's premise report and answer (judged right on all three).
+holds the scenario's planning question and two recorded answers to it: Nemotron 3 Super reading the whole history
+with reasoning on, the same model that answers in our pipeline (judged wrong on all three), and this memory's premise
+report and answer (judged right on all three).
 
 `docs/reports/09-measured-run/seed.py` rebuilt them from the run's recordings only (`REPLAY=1`, no key): it re-runs the
 write path over all 50 sessions, re-derives our answer with the read path, and asserts the answer equals the one the
@@ -253,9 +255,10 @@ run recorded before writing the file. Loading one costs no model call.
 
 ## 9. The page (`app/static/`)
 
-- **First screen:** the measured result (18/36 against 2/36, and 6/12 against 0/12 out-of-date premises refused), an
+- **First screen:** the measured result (18/36 with the memory, against 6/36 for Super and 6/36 for Ultra reading the
+  whole history; 6/12 out-of-date premises refused, against 0/12 and 1/12), an
   example picker, and the privacy statement. An empty memory loads the first long example by itself.
-- **Same question, two systems:** the scenario's question; Lightning's answer after reading all 50 sessions; this
+- **Same question, two systems:** the scenario's question; Super's answer after reading all 50 sessions; this
   memory's premise check and answer; each with the benchmark judge's verdict. Both are labelled as recorded.
 - **Timeline:** every fact, oldest first; a stale fact is struck through with what replaced it, when and why; the fact
   the latest check relied on is marked "Caught by the check"; a filter shows only the facts made untrue.
@@ -288,6 +291,9 @@ against Hermes's `MemoryProvider` interface with scripted test replies; it has n
   used while building.
 - **Conditions:**
   - `baseline`: Nemotron 3.5 Lightning reads the full history and answers (STALE's own setup);
+  - `baseline-super`, `baseline-ultra`: Nemotron 3 Super and Nemotron 3 Ultra do the same with their stronger setting,
+    reasoning on, up to 16,000 output tokens; a reply cut off there gets one retry with 32,000, and a second cut is
+    scored as no answer;
   - `ours`: each session in time order through the write path into a fresh store, then each question through the read
     path.
 - **Judge:** Nemotron 3 Ultra with STALE's own judge prompt, byte for byte, temperature 0. The STALE paper uses
@@ -300,14 +306,21 @@ against Hermes's `MemoryProvider` interface with scripted test replies; it has n
 | | T1 SR | T1 PR | T1 IPA | T2 SR | T2 PR | T2 IPA | Correct | Overall |
 |---|---|---|---|---|---|---|---|---|
 | Nemotron 3.5 Lightning, whole history | 0/6 | 0/6 | 2/6 | 0/6 | 0/6 | 0/6 | 2/36 | 5.6 % |
-| **Entorhinal** | 3/6 | 4/6 | 5/6 | 2/6 | 2/6 | 2/6 | **18/36** | **50.0 %** |
+| Nemotron 3 Super, whole history, reasoning on | 1/6 | 0/6 | 5/6 | 0/6 | 0/6 | 0/6 | 6/36 | 16.7 % |
+| Nemotron 3 Ultra, whole history, reasoning on | 1/6 | 0/6 | 1/6 | 3/6 | 1/6 | 0/6 | 6/36 | 16.7 % |
+| **Entorhinal** (Lightning extracts; Super judges, checks and answers) | 3/6 | 4/6 | 5/6 | 2/6 | 2/6 | 2/6 | **18/36** | **50.0 %** |
 
 T1 is a direct change, T2 an implied consequence. Overall is the mean of the six cells, as in STALE's own table.
 
-- **Premise resistance:** 6 of 12 against 0 of 12. The memory corrects the user instead of agreeing with an outdated
-  assumption; the model reading everything never did.
-- **Cost:** about $0.37 to build one 50-session memory and answer its three questions; one question costs $0.009 to
-  $0.012 in the recordings (a live one on the design-subscription memory cost $0.016).
+- **The same model, with and without the memory:** Super answers in our pipeline. Reading the whole history it got 6
+  of 36; with the memory, 18. The 550B Ultra reading the whole history also got 6, so a pipeline built on the smaller
+  models tripled the largest model's score on this benchmark.
+- **Premise resistance:** 6 of 12 with the memory; 0 of 12 for Super and 1 of 12 for Ultra reading the whole history.
+- **Ultra's cut-off answers:** two of its 36 were cut off again at 32,000 output tokens and count as wrong; with both
+  right it would be 8 of 36.
+- **Cost:** about $0.37 to build one 50-session memory and answer its three questions; after that one question costs
+  $0.009 to $0.012 in the recordings (a live one on the design-subscription memory cost $0.016). Reading the whole
+  history for the same 36 answers cost $1.43 on Super and $4.80 on Ultra, judge included.
 - **Speed:** the 12 scenarios ran in about 60 minutes, five at a time.
 - **For context only:** STALE's published table (its own judge, all 400 scenarios) gives the authors' own memory
   system (CUPMem) 68.0, Claude Opus 4.6

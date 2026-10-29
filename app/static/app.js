@@ -302,8 +302,8 @@ async function load(name, scroll = true) {
     many(x.chars) + ' characters of chat. This pipeline built ' + many(x.loaded) + ' facts from it and marked ' +
     stale + ' untrue. It is your memory now; Delete everything, at the bottom, to start your own.';
   $('compare-question').textContent = x.question;
-  $('flat-how').textContent = 'All ' + x.sessions + ' sessions in one prompt, then the question.';
-  $('flat-text').textContent = x.flat.answer;
+  $('flat-how').textContent = 'All ' + x.sessions + ' sessions in one prompt, reasoning on, then the question.';
+  prose($('flat-text'), x.flat.answer);
   verdict($('flat-verdict'), x.flat.correct);
   $('ours-how').textContent = 'Nemotron 3 Super checks the question against the ' + many(x.loaded) +
     ' dated facts, then answers: 2 model calls, ' + usd(x.ours.answer.cost_usd) + '.';

@@ -1,7 +1,8 @@
 """The demo's long examples (app/examples/): three scenarios' memories from the measured run, rebuilt from its recorded replies only, so
 nothing is spent (REPLAY=1 turns a missing recording into an error). Each file also carries the scenario's dim3 question
-and both answers the run recorded to it (results/measured-run): the baseline's (Nemotron 3.5 Lightning reading the whole history) and
-ours, which this script re-derives from the same recordings and checks against the run's row.
+and two recorded answers to it (results/measured-run): Nemotron 3 Super's, reasoning on, reading the whole history (the
+same model that answers in our pipeline), and ours, which this script re-derives from the same recordings and checks
+against the run's row.
 
 The recordings (cache/) are not in the repo, and the request bodies must match the run's, so this runs in a checkout of
 `fefcf45`, the commit the run used:
@@ -29,7 +30,7 @@ def row(condition: str) -> dict:
                 if r.startswith(f'{{"uid": "{rec["uid"]}"') and '"dim3_query"' in r)
 
 
-flat, ours = row("baseline"), row("ours")
+flat, ours = row("baseline-super"), row("ours")
 store = Store(":memory:")
 for i, turns in enumerate(rec["haystack_session"]):  # as bench.run.ours did in the run
     if turns:
