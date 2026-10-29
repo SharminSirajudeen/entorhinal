@@ -218,18 +218,21 @@ function build(stage, renderer) {
   }
 
   /* ---- the four calls the page makes ---- */
-  function sync(facts) {
+  /* `grow`: a replay, so a fact that goes stale flashes and its thread draws in, as on a live change */
+  function sync(facts, grow = false) {
     const ids = new Set(facts.map(f => f.id));
     for (const n of [...state.nodes.values()]) if (!ids.has(n.id)) drop(n);
     for (const f of facts) {
       const n = state.nodes.get(f.id) || node(f.id, f.time, f.attribute);
       relabel(n, f.attribute);
       n.time = f.time;
-      n.staleTo = f.status === 'stale' ? 1 : 0;
+      const stale = f.status === 'stale' ? 1 : 0;
+      if (grow && stale && !n.staleTo) n.flash = 0.8;
+      n.staleTo = stale;
     }
     for (const f of facts) {
       const by = state.nodes.get(f.invalidated_by);
-      if (f.status === 'stale' && by) thread(state.nodes.get(f.id), by, 1);
+      if (f.status === 'stale' && by) thread(state.nodes.get(f.id), by, grow ? 0 : 1);
     }
     state.pending = null;
     layout();

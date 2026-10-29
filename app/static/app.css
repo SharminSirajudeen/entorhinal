@@ -92,7 +92,7 @@ button { cursor: pointer; }
 .mark .hub { opacity: 1; }
 h1 { font-size: clamp(1.875rem, 1.4rem + 1.6vw, 2.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -.025em; }
 .lede { font-size: 1.25rem; line-height: 1.4; letter-spacing: -.01em; color: var(--text-2); max-width: 44ch; text-wrap: pretty; }
-.note { font-size: .8125rem; line-height: 1.45; color: var(--text-2); max-width: 78ch; }
+.note { font-size: .75rem; line-height: 1.5; color: var(--text-2); max-width: 78ch; }
 
 /* ---- layout: the story on top, then the bench (memory, ask, add) with the live pipeline kept beside it ---- */
 .layout, .bench { display: grid; gap: 16px; min-width: 0; }
@@ -180,7 +180,8 @@ body[data-busy] .primary, body[data-busy] .danger { opacity: .5; cursor: progres
 /* ---- live pipeline: the scene, the step strip under it, then the log ---- */
 .engine { display: flex; flex-direction: column; gap: 12px; }
 .engine-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 12px; }
-.total { font-size: .8125rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.total { font-size: .75rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+#engine-title, #timeline-title, #ask-title, #add-title { font-size: 1.1875rem; }
 .stage {
   position: relative;
   flex: none;
@@ -227,8 +228,8 @@ body[data-busy] .primary, body[data-busy] .danger { opacity: .5; cursor: progres
   background: var(--surface);
   transition: background-color 250ms var(--ease), border-color 250ms var(--ease);
 }
-.name { font-size: .8125rem; font-weight: 500; line-height: 1.35; }
-.name small { display: block; font-size: .6875rem; font-weight: 400; color: var(--text-2); }
+.name { font-size: .75rem; font-weight: 500; line-height: 1.35; }
+.name small { display: block; font-size: .625rem; font-weight: 400; color: var(--text-2); }
 /* a step's time and state are read out, not shown: the log beside it carries the seconds */
 .took, .said { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .step[data-state="active"] {
@@ -247,6 +248,62 @@ body[data-busy] .primary, body[data-busy] .danger { opacity: .5; cursor: progres
   animation: halo 1.4s var(--ease-out) infinite;
 }
 .step[data-state="skipped"] .dot { border-style: dashed; }
+/* the hand-off between steps: a connector that fills as each step starts, and flows while it runs */
+.step + .step::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 14px;
+  width: 9px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--rail);
+}
+.step[data-state="done"]::before { background: var(--accent); }
+.step[data-state="active"]::before {
+  background: repeating-linear-gradient(90deg, var(--accent) 0 3px, transparent 3px 6px);
+  animation: flow 500ms linear infinite;
+}
+.thinking {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100% - 24px);
+  padding: 7px 14px 7px 8px;
+  border-radius: var(--r-pill);
+  background: rgba(10, 16, 30, .58);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08);
+  color: rgba(235, 242, 255, .92);
+  font-size: .8125rem;
+  animation: rise 320ms var(--ease-out) both;
+}
+.orb {
+  position: relative;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: conic-gradient(#7cc4ff, #b69cff, #5ad1c8, #7cc4ff);
+  animation: spin 2.4s linear infinite, breathe 1.4s ease-in-out infinite alternate;
+}
+.orb::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 196, 255, .5), transparent 70%);
+  animation: breathe 1.4s ease-in-out infinite alternate;
+}
+.thinking-words { display: grid; min-width: 0; line-height: 1.3; }
+.thinking-words b { font-weight: 600; }
+#thinking-said { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: rgba(235, 242, 255, .62); font-size: .75rem; }
+#thinking-said:empty { display: none; }
+.thinking-time { margin-left: 4px; font-variant-numeric: tabular-nums; color: rgba(235, 242, 255, .7); }
 .step[data-state="skipped"] .name { color: var(--text-2); }
 
 .log-title { margin-top: 2px; }
@@ -257,8 +314,9 @@ body[data-busy] .primary, body[data-busy] .danger { opacity: .5; cursor: progres
   column-gap: 8px;
   padding: 8px 0;
   border-top: 1px solid var(--line);
-  font-size: .8125rem;
+  font-size: .75rem;
   line-height: 1.4;
+  color: var(--text-2);
   animation: rise 320ms var(--ease-out) both;
 }
 #log li:first-child { border-top: 0; }
@@ -302,7 +360,7 @@ body[data-busy] .primary, body[data-busy] .danger { opacity: .5; cursor: progres
   background: var(--accent);
 }
 .fact[data-status="stale"]::before { background: var(--surface); border: 2px solid var(--stale); }
-.fact-head { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 10px; font-size: .8125rem; color: var(--text-2); }
+.fact-head { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 10px; font-size: .75rem; color: var(--text-2); }
 .when { font-variant-numeric: tabular-nums; }
 .pill { padding: 0 8px; border-radius: var(--r-pill); background: var(--stale-wash); color: var(--stale); font-size: .6875rem; font-weight: 600; line-height: 1.6; }
 .value { margin-top: 2px; overflow-wrap: anywhere; }
@@ -312,7 +370,7 @@ body[data-busy] .primary, body[data-busy] .danger { opacity: .5; cursor: progres
   -webkit-box-decoration-break: slice;
   box-decoration-break: slice;
 }
-.cause { margin-top: 4px; font-size: .875rem; color: var(--stale); overflow-wrap: anywhere; }
+.cause { margin-top: 4px; font-size: .8125rem; color: var(--stale); overflow-wrap: anywhere; }
 .empty { padding: 8px 0; color: var(--text-2); }
 .fact[data-change="new"] { animation: rise 420ms var(--ease-out) both; }
 .fact[data-change="staled"] { animation: wash 2.6s var(--ease) both; }
@@ -350,18 +408,20 @@ body[data-busy] .primary, body[data-busy] .danger { opacity: .5; cursor: progres
 /* ---- compare: one question, the two recorded answers side by side ---- */
 .compare { display: grid; gap: 14px; }
 .compare .hint { margin: 0; max-width: 92ch; }
-.question { margin: 0; padding: 12px 16px; border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; background: var(--fill); font-size: 1.0625rem; line-height: 1.45; text-wrap: pretty; }
+.question { margin: 0; padding: 14px 18px; border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; background: var(--fill); font-size: 1.1875rem; font-weight: 500; line-height: 1.45; letter-spacing: -.005em; text-wrap: pretty; }
+#compare-title { font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem); font-weight: 700; letter-spacing: -.02em; }
+.compare > .hint { font-size: .8125rem; }
 .sides { display: grid; gap: 14px; }
 .side { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 18px; }
 .side[data-side="ours"] { border-color: color-mix(in srgb, var(--accent) 45%, transparent); box-shadow: 0 0 0 3px var(--accent-wash); }
 .side h3 { font-size: 1.0625rem; font-weight: 600; color: var(--text); letter-spacing: -.01em; }
 .side-how { margin-top: -6px; font-size: .8125rem; color: var(--text-2); }
 .side .check { margin: 0; }
-.said-text { white-space: pre-line; max-height: 15rem; overflow: auto; overscroll-behavior: contain; overflow-wrap: anywhere; font-size: .9375rem; }
+.said-text { white-space: pre-line; max-height: 15rem; overflow: auto; overscroll-behavior: contain; overflow-wrap: anywhere; font-size: 1.0625rem; line-height: 1.55; }
 /* the whole-history answer fills its card down to the verdict, as tall as the memory's card beside it */
-.side[data-side="flat"] .said-text { flex: 1 1 0; min-height: 15rem; max-height: none; color: var(--text-2); }
+.side[data-side="flat"] .said-text { flex: 1 1 0; min-height: 15rem; max-height: none; color: var(--text-2); font-size: 1rem; }
 .side .why { display: none; }  /* the judge's reason is on the caught fact in the timeline */
-.verdict { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 4px; font-size: .9375rem; font-weight: 600; }
+.verdict { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 4px; font-size: 1.0625rem; font-weight: 600; }
 .verdict::before { flex: none; width: 22px; height: 22px; border-radius: 50%; color: var(--surface); font-size: .8125rem; line-height: 22px; text-align: center; }
 .verdict[data-correct="true"] { color: var(--ok); }
 .verdict[data-correct="true"]::before { content: "✓"; background: var(--ok); }
@@ -452,6 +512,8 @@ tr[data-row="ours"] td:last-child { color: var(--accent); }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes strike { from { background-size: 0 2px; } }
 @keyframes wash { 0%, 35% { background-color: var(--stale-wash); } 100% { background-color: transparent; } }
+@keyframes flow { to { background-position: 6px 0; } }
+@keyframes breathe { from { scale: .9; opacity: .82; } to { scale: 1.06; opacity: 1; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }

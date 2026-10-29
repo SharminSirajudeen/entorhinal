@@ -150,6 +150,21 @@ async function poll() {
   return fresh;
 }
 
+/* the thinking orb: while a model step runs, what it is doing, for how long, and the latest thing the pipeline said */
+let thinking = null;  /* { step, since, timer } while a model step runs */
+function think(step, said) {
+  if (said) $('thinking-said').textContent = said;
+  if (step === (thinking && thinking.step)) return;
+  if (thinking) clearInterval(thinking.timer);
+  thinking = step && { step, since: performance.now() };
+  $('thinking').hidden = !step;
+  if (!step) return;
+  $('thinking-what').textContent = step.dataset.doing;
+  const tick = () => { $('thinking-time').textContent = ((performance.now() - thinking.since) / 1000).toFixed(1) + ' s'; };
+  tick();
+  thinking.timer = setInterval(tick, 100);
+}
+
 /* a step is done once it has logged; the one after the latest logged step is running; a model step with no model
    call was skipped */
 function stateOf(step, i, at, call, finished) {
@@ -169,6 +184,9 @@ function stage(path, events, finished) {
     const doing = s.dataset.doing + '…';  /* set only when it changes: #status is a live region, read out on change */
     if (state === 'active' && $('status').textContent !== doing) $('status').textContent = doing;
   });
+  const running = steps.find(s => s.dataset.state === 'active' && s.hasAttribute('data-model'));
+  const said = [...events].reverse().find(e => !e.call);
+  think(running || null, said && said.text);
 }
 
 function total(events, finished) {
@@ -197,6 +215,7 @@ async function watch(path, request, time) {
     total(events, last);
   }
   scene.end();
+  think(null);
   return request;
 }
 
@@ -249,6 +268,23 @@ const remember = name => {
 };
 const remembered = () => { try { return localStorage.getItem('example'); } catch { return null; } };
 
+/* a recorded memory, rebuilt in the scene session by session: a fact counts as stale only once the fact that replaced
+   it has arrived, so each red thread draws at the moment its change happened. O(sessions x facts), about 4 s */
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+async function replay(all) {
+  const byId = Object.fromEntries(all.map(f => [f.id, f]));
+  const last = Math.max(...all.map(f => f.source_idx));
+  $('total').textContent = 'Replaying how this memory was built';
+  $('stage').toggleAttribute('data-empty', false);
+  for (let k = 0; k <= last && !still; k++) {
+    scene.sync(all.filter(f => f.source_idx <= k).map(f => {
+      const by = byId[f.invalidated_by];
+      return f.status === 'stale' && by && by.source_idx > k ? { ...f, status: 'active' } : f;
+    }), true);
+    await wait(75);
+  }
+}
+
 const verdict = (node, correct) => {
   node.dataset.correct = correct;
   node.textContent = (correct ? 'Right' : 'Wrong') + ', by STALE\'s judge';
@@ -258,6 +294,7 @@ const verdict = (node, correct) => {
    our run recorded to it, from the model that read the whole history and from this memory */
 async function load(name, scroll = true) {
   const x = await call('/example', { name });
+  await replay((await facts())[0]);
   await showAnswer(x.ours.answer, $('ours-report'), $('ours-text'));
   const stale = (await showTimeline()).filter(f => f.status === 'stale').length;
   await poll();
