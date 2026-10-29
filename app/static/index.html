@@ -33,11 +33,11 @@
   <section class="stats" aria-labelledby="stats-title">
     <h2 id="stats-title">Measured on STALE, a public benchmark for this failure</h2>
     <dl>
-      <div class="stat ours"><dt>questions right with this memory</dt><dd><b data-stat="ours">18/36</b></dd></div>
-      <div class="stat"><dt>Nemotron 3.5 Lightning reading the whole history</dt><dd><b data-stat="flat">2/36</b></dd></div>
-      <div class="stat"><dt>out-of-date premises refused</dt><dd><b data-stat="pr">6/12</b><span>against 0/12 reading the whole history</span></dd></div>
+      <div class="stat ours"><dt>questions right: Nemotron with this memory</dt><dd><b data-stat="ours">18/36</b></dd></div>
+      <div class="stat"><dt>Nemotron 3 Super reading the whole history</dt><dd><b data-stat="super">6/36</b></dd></div>
+      <div class="stat"><dt>Nemotron 3 Ultra (550B) reading the whole history</dt><dd><b data-stat="ultra">6/36</b></dd></div>
     </dl>
-    <p class="note">12 STALE scenarios (arXiv 2605.06527) that none of our fixes were made on; judge: Nemotron 3 Ultra with STALE's own prompt. The full table is under How it works.</p>
+    <p class="note">Out-of-date premises refused: <b data-stat="pr">6/12</b> with this memory, against 0/12 for Super and 1/12 for Ultra reading everything. 12 STALE scenarios (arXiv 2605.06527) that none of our fixes were made on; the larger models read with reasoning on; judge: Nemotron 3 Ultra with STALE's own prompt. The full table is under How it works.</p>
   </section>
 </header>
 
@@ -47,7 +47,7 @@
     <blockquote class="question" id="compare-question"></blockquote>
     <div class="sides">
       <article class="side" data-side="flat" aria-labelledby="flat-title">
-        <h3 id="flat-title">Nemotron 3.5 Lightning, reading the whole history</h3>
+        <h3 id="flat-title">Nemotron 3 Super, reading the whole history</h3>
         <p class="side-how" id="flat-how"></p>
         <p class="said-text" id="flat-text"></p>
         <p class="verdict" id="flat-verdict"></p>
@@ -184,12 +184,14 @@
       </article>
     </div>
     <h3 class="how-sub">Measured</h3>
-    <p class="hint">12 STALE scenarios (seed 11, six of each type) that none of our fixes were made on, all three probing questions each; judge: Nemotron 3 Ultra with STALE's own prompt, temperature 0. Type 1 is a direct change, Type 2 an implied consequence. SR: knows the old fact may be outdated. PR: refuses a stale premise. IPA: plans for the new situation.</p>
+    <p class="hint">12 STALE scenarios (seed 11, six of each type) that none of our fixes were made on, all three probing questions each; judge: Nemotron 3 Ultra with STALE's own prompt, temperature 0. Type 1 is a direct change, Type 2 an implied consequence. Two of Ultra's 36 answers were still cut off at 32,000 output tokens and count as wrong. SR: knows the old fact may be outdated. PR: refuses a stale premise. IPA: plans for the new situation.</p>
     <div class="table-wrap" tabindex="0" role="region" aria-label="Results by type and question">
       <table>
         <thead><tr><th scope="col"></th><th scope="col">T1 SR</th><th scope="col">T1 PR</th><th scope="col">T1 IPA</th><th scope="col">T2 SR</th><th scope="col">T2 PR</th><th scope="col">T2 IPA</th><th scope="col">Correct</th></tr></thead>
         <tbody>
           <tr data-row="flat"><th scope="row">Nemotron 3.5 Lightning, whole history</th><td>0/6</td><td>0/6</td><td>2/6</td><td>0/6</td><td>0/6</td><td>0/6</td><td>2/36</td></tr>
+          <tr data-row="super"><th scope="row">Nemotron 3 Super, whole history, reasoning on</th><td>1/6</td><td>0/6</td><td>5/6</td><td>0/6</td><td>0/6</td><td>0/6</td><td>6/36</td></tr>
+          <tr data-row="ultra"><th scope="row">Nemotron 3 Ultra, whole history, reasoning on</th><td>1/6</td><td>0/6</td><td>1/6</td><td>3/6</td><td>1/6</td><td>0/6</td><td>6/36</td></tr>
           <tr data-row="ours"><th scope="row">Entorhinal</th><td>3/6</td><td>4/6</td><td>5/6</td><td>2/6</td><td>2/6</td><td>2/6</td><td>18/36</td></tr>
         </tbody>
       </table>

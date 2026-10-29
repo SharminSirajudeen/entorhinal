@@ -52,3 +52,29 @@ the three scenarios where ours was right on all three questions and the baseline
 holds that third question and both recorded answers to it: the baseline's, and ours, which `seed.py` re-derives from
 the recordings (`query.answer`) and asserts equal to the measured run's row before writing it. Asking the three questions on the current code against
 those memories replays the measured run's own premise-check and answer recordings (29 Oct, no key set, `REPLAY=1`): the requests are unchanged.
+
+## Larger models reading the whole history (29 Oct)
+
+The baseline above is Nemotron 3.5 Lightning, the smallest model. To compare like with like, the same 12 scenarios
+were run with Nemotron 3 Super (the model that judges, checks and answers in `ours`) and Nemotron 3 Ultra (550B)
+reading the whole history, each with reasoning on and up to 16,000 output tokens; a reply cut off there gets one retry
+with 32,000, and a second cut is scored as no answer (`bench/run.py`, `BASELINES`).
+
+```
+python -m bench.run --condition baseline-super --n 6 --seed 11 --cap 2.9 --out results/measured-run
+python -m bench.run --condition baseline-ultra --n 6 --seed 11 --cap 8.5 --out results/measured-run
+```
+
+| | T1 SR | T1 PR | T1 IPA | T2 SR | T2 PR | T2 IPA | Correct | Overall | Cost |
+|---|---|---|---|---|---|---|---|---|---|
+| Super, whole history | 1/6 | 0/6 | 5/6 | 0/6 | 0/6 | 0/6 | 6/36 | 16.7 % | $1.4264 |
+| Ultra, whole history | 1/6 | 0/6 | 1/6 | 3/6 | 1/6 | 0/6 | 6/36 | 16.7 % | $4.7988 |
+| ours | 3/6 | 4/6 | 5/6 | 2/6 | 2/6 | 2/6 | 18/36 | 50.0 % | $3.5968 |
+
+- Super got none of its replies cut off. Of the 53 recorded Ultra calls (answers, retries and the judge), 7 were cut
+  off; two answers stayed cut after the retry
+  and count as wrong (8 of 36 if both had been right).
+- Ultra's first attempt stopped on its first cut-off reply, before the retry existed; its two recorded calls ($0.2124)
+  replayed for free in the run above, whose cost includes them.
+- All three models answered the three demo questions wrong; the demo now shows Super's answer, the same model as ours.
+

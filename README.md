@@ -38,18 +38,25 @@ company, anyone across a life.
 
 Measured on [STALE](https://arxiv.org/abs/2605.06527), 12 scenarios (seed 11, six of each type) that none of our
 fixes were made on, three questions each, judged by Nemotron 3 Ultra with STALE's own judge prompt at temperature 0
-([report](docs/reports/09-measured-run/README.md)):
+([report](docs/reports/09-measured-run/README.md)). The memory adds to the model it runs on: the same Nemotron 3 Super
+that answers in our pipeline got 6 of 36 reading the whole history, and 18 of 36 with the memory. The 550B
+Nemotron 3 Ultra reading the whole history also got 6.
 
 | | T1 SR | T1 PR | T1 IPA | T2 SR | T2 PR | T2 IPA | Correct | Overall |
 |---|---|---|---|---|---|---|---|---|
 | Nemotron 3.5 Lightning reading the whole history | 0/6 | 0/6 | 2/6 | 0/6 | 0/6 | 0/6 | 2/36 | 5.6 % |
-| **Entorhinal** | 3/6 | 4/6 | 5/6 | 2/6 | 2/6 | 2/6 | **18/36** | **50.0 %** |
+| Nemotron 3 Super reading the whole history, reasoning on | 1/6 | 0/6 | 5/6 | 0/6 | 0/6 | 0/6 | 6/36 | 16.7 % |
+| Nemotron 3 Ultra reading the whole history, reasoning on | 1/6 | 0/6 | 1/6 | 3/6 | 1/6 | 0/6 | 6/36 | 16.7 % |
+| **Entorhinal** (Lightning extracts; Super judges, checks and answers) | 3/6 | 4/6 | 5/6 | 2/6 | 2/6 | 2/6 | **18/36** | **50.0 %** |
 
 T1 is a direct change, T2 an implied consequence. SR: knows the old fact may be outdated. PR: refuses a premise that
 rests on it. IPA: plans for the new situation. Overall is the mean of the six cells, as in STALE's own table.
 
-- **Cost:** about $0.37 to build a 50-session memory and answer its three questions, at Nebius list prices. One
-  question costs $0.009 to $0.012 in the recordings; a live one on the demo cost $0.016.
+- **Cost:** about $0.37 to build a 50-session memory and answer its three questions, at Nebius list prices; after
+  that, one question costs $0.009 to $0.012 in the recordings (a live one on the demo cost $0.016). Reading the whole
+  history for the same 36 answers cost $1.43 on Super and $4.80 on Ultra, judge included.
+- **Ultra's cut-off answers:** two of its 36 answers were still cut off after a retry at 32,000 output tokens and count
+  as wrong; with both right it would be 8 of 36.
 - **For context only:** STALE's published table (a different judge, Gemini-3.1-flash-lite, on all 400 scenarios) gives
   the authors' own memory system (CUPMem) 68.0, Claude Opus 4.6 28.3, GPT-5.4 15.7, mem0 8.3 and Zep 6.0. Judge and sample differ, so we do not rank
   ourselves against those rows.
@@ -58,9 +65,9 @@ rests on it. IPA: plans for the new situation. Overall is the mean of the six ce
 
 A model that goes along with an outdated assumption gives confident, wrong advice. STALE measures this directly as
 premise resistance: does the system refuse a question that rests on a fact that is no longer true? Entorhinal refused
-6 of 12; Nemotron reading the whole history refused none. In the demo's first example, that model told someone who had
-cut their internet line that renewing a cloud design subscription "sounds like a solid plan"; Entorhinal answered that
-they work offline now.
+6 of 12. Reading the whole history, Nemotron 3 Super refused none and Nemotron 3 Ultra one. In the demo's first
+example, Super reading all 50 sessions told someone who had cut their internet line that renewing a cloud design
+subscription "sounds like a solid plan"; the same Super with the memory answered that they work offline now.
 
 The check is grounded in the memory: it can flag only a fact the memory holds as stale, and what replaced it, and
 when, is read from the memory, not from the model's reply. Every correction is shown with its source fact and date, so
@@ -80,7 +87,7 @@ Open https://entorhinal.onrender.com (a free instance: the first visit after a q
 1. **The first screen** shows the measured result and loads a real memory by itself: a whole STALE life of 50 sessions
    and about 700,000 characters of chat, as this pipeline built it, 464 facts with 18 marked untrue. No model call.
 2. **Same question, two systems:** the scenario's question with both answers recorded in our benchmark run, side by
-   side, each with the judge's verdict: Nemotron reading all 50 sessions (wrong) and Entorhinal, its premise check
+   side, each with the judge's verdict: Nemotron 3 Super reading all 50 sessions (wrong) and Entorhinal, its premise check
    first (right).
 3. **Timeline and live pipeline:** every fact, oldest first; stale ones struck through with what replaced them; the
    fact the check relied on is marked. A three.js scene lays the memory out in time and moves only on real events.
@@ -126,7 +133,7 @@ the tests and the known defects in full.
 | Nemotron 3.5 Lightning (`nvidia/Nemotron-3_5-Lightning`) | extraction, and the benchmark's whole-history baseline | it reads every session; at $0.06 / $0.24 per million input / output tokens it keeps a 50-session life cheap |
 | Nemotron 3 Super (`nvidia/nemotron-3-super-120b-a12b`), reasoning on | judging change, checking premises | the judgement that needs reasoning: with reasoning off, Super missed both changes in our first pilot |
 | Nemotron 3 Super, reasoning off | the answer | fast once the facts and the premise report are given |
-| Nemotron 3 Ultra (`nvidia/Nemotron-3-Ultra-550b-a55b`) | the benchmark judge only | the strongest model, kept out of the product's path |
+| Nemotron 3 Ultra (`nvidia/Nemotron-3-Ultra-550b-a55b`) | the benchmark judge, and a whole-history baseline | the strongest model, kept out of the product's path |
 
 **Where Token Factory accelerated our work:**
 
@@ -180,8 +187,10 @@ above `--cap`.
 
 ```bash
 curl -L -o data/T1_T2_400_FULL.json https://huggingface.co/datasets/STALEproj/STALE/resolve/main/T1_T2_400_FULL.json
-python -m bench.run --condition baseline --n 6 --seed 11 --cap 0.9 --out results/measured-run
-python -m bench.run --condition ours     --n 6 --seed 11 --cap 4.2 --out results/measured-run
+python -m bench.run --condition baseline       --n 6 --seed 11 --cap 0.9 --out results/measured-run
+python -m bench.run --condition baseline-super --n 6 --seed 11 --cap 2.9 --out results/measured-run
+python -m bench.run --condition baseline-ultra --n 6 --seed 11 --cap 8.5 --out results/measured-run
+python -m bench.run --condition ours           --n 6 --seed 11 --cap 4.2 --out results/measured-run
 ```
 
 Every experiment, with its code, data and spend, is in [docs/reports/](docs/reports/README.md).
