@@ -339,6 +339,14 @@ def test_every_response_carries_the_csp_header(app):
         assert c.call(path)[1]["Content-Security-Policy"] == "default-src 'self'", path
 
 
+def test_every_data_response_forbids_caching(app):
+    c = app()
+    c.json("/ingest", {"sessions": sessions()})
+    for path, body in (("/timeline", None), ("/activity", None), ("/export", None), ("/nope", None),
+                       ("/ask", {"question": "q"}), ("/example", {"name": "travel"}), ("/delete-all", {})):
+        assert c.call(path, body)[1]["Cache-Control"] == "no-store", path
+
+
 def test_page_serves_each_static_file_with_its_type(app):
     c = app()
     assert c.call("/")[1]["Content-Type"].startswith("text/html")

@@ -3,6 +3,8 @@
 const pytest = require('../pytest.js');
 const S = 'app/server.py', G = 'app/guard.py', H = 'app/static/index.html', T = 'tests/test_app.py';
 module.exports = [
+  { from:'app: data responses are never cached', file:S, find:'            self.send_header("Cache-Control", "no-store")',
+    replace:'            pass', ...pytest(T, 'test_every_data_response_forbids_caching') },
   { from:'app: CSP header on every response', file:S, find:'self.send_header("Content-Security-Policy", CSP)',
     replace:'pass', ...pytest(T, 'test_every_response_carries_the_csp_header') },
   { from:'app: page loads a stylesheet from another origin', file:H, find:'<link rel="stylesheet" href="/app.css">',
