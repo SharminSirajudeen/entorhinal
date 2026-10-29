@@ -12,6 +12,7 @@ import pytest
 from bench import judge as judge_mod
 from bench import run as bench_run
 from bench.stale import load_stale, sample
+from life import llm
 from life.constants import LIGHTNING, SUPER, ULTRA
 from life.types import Answer, Instance, PremiseReport, Session
 
@@ -158,6 +159,17 @@ def test_a_larger_baseline_reads_with_reasoning_on_and_room_to_reason(condition,
     got = bench_run.baseline(instance(), chat, condition)
     assert calls == [(model, {"think": True, "max_tokens": 16000})] * 3
     assert {d: c for d, (_, c) in got.items()} == {d: pytest.approx(price) for d in DIMS}
+
+
+def test_a_cut_off_baseline_reply_gets_twice_the_room_once_then_counts_as_no_answer():
+    calls = []
+
+    def cut(model, messages, **kw):
+        calls.append(kw["max_tokens"])
+        raise llm.Truncated(model, {"prompt_tokens": MILLION})
+    got = bench_run.baseline(instance(), cut, "baseline-ultra")
+    assert calls == [16000, 32000] * 3
+    assert got == {d: ("", pytest.approx(2.00)) for d in DIMS}  # both cut calls priced: 2 x 1M input x $1
 
 
 def test_ours_ingests_non_empty_sessions_in_order_then_answers_each_query_from_that_store():

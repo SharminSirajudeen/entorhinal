@@ -60,13 +60,27 @@ def prompts(context: str, query: str, dim: str) -> list[dict]:
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
 
 
+def reply_with_room(chat, model: str, messages: list[dict], settings: dict) -> str:
+    """The answer; a reply cut at its token cap is tried once more with twice the room, and a second cut is no
+    answer (scored as wrong) rather than an error that stops the run."""
+    try:
+        return chat(model, messages, **settings)[0]
+    except llm.Truncated:
+        roomier = {**settings, "max_tokens": 2 * settings.get("max_tokens", OUT_TOKENS)}
+        try:
+            return chat(model, messages, **roomier)[0]
+        except llm.Truncated:
+            return ""
+
+
 def baseline(inst: Instance, chat=llm.chat, condition: str = "baseline") -> dict:
-    """{dim: (answer, cost)}: the condition's model reads the whole history, STALE's own baseline."""
+    """{dim: (answer, cost)}: the condition's model reads the whole history, STALE's own baseline. A dimension's
+    cost is every call it took, a cut-off one included."""
     model, settings = BASELINES[condition]
     h, out = history(inst), {}
     for d in DIMS:
-        text, usage = chat(model, prompts(h, inst.probing_queries[d], d), **settings)
-        out[d] = (text, llm.price(model, usage))
+        metered, spent = meter(chat)
+        out[d] = (reply_with_room(metered, model, prompts(h, inst.probing_queries[d], d), settings), sum(spent))
     return out
 
 
