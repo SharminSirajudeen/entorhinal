@@ -1,0 +1,1484 @@
+[
+ {
+  "topic": "entertain_music_book",
+  "index": 52,
+  "facts": 213,
+  "caught": 6,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "travel_transportation",
+  "index": 26,
+  "facts": 217,
+  "caught": 6,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "shop_technology",
+  "index": 3,
+  "facts": 227,
+  "caught": 7,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "entertain_sports",
+  "index": 23,
+  "facts": 219,
+  "caught": 9,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "travel_hotel",
+  "index": 35,
+  "facts": 211,
+  "caught": 1,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "lifestyle_fit",
+  "index": 27,
+  "facts": 213,
+  "caught": 9,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": true,
+    "correct": false
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": true,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "pet_ownership",
+  "index": 15,
+  "facts": 212,
+  "caught": 11,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": true,
+    "correct": false
+   },
+   "ours": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "lifestyle_beauty",
+  "index": 32,
+  "facts": 222,
+  "caught": 13,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "shop_motors",
+  "index": 40,
+  "facts": 221,
+  "caught": 0,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "travel_activities",
+  "index": 3,
+  "facts": 213,
+  "caught": 7,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "rag": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "lifestyle_dietary",
+  "index": 2,
+  "facts": 211,
+  "caught": 4,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "rag": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "education_learning_styles",
+  "index": 10,
+  "facts": 220,
+  "caught": 8,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "rag": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "travel_transportation",
+  "index": 18,
+  "facts": 221,
+  "caught": 10,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "lifestyle_fit",
+  "index": 5,
+  "facts": 212,
+  "caught": 21,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "lifestyle_beauty",
+  "index": 3,
+  "facts": 218,
+  "caught": 17,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": true,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "professional_work_location_style",
+  "index": 35,
+  "facts": 212,
+  "caught": 1,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": true,
+    "correct": false
+   },
+   "ours": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": true,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "travel_restaurant",
+  "index": 8,
+  "facts": 218,
+  "caught": 8,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": true,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "shop_motors",
+  "index": 14,
+  "facts": 215,
+  "caught": 6,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": true,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "travel_activities",
+  "index": 14,
+  "facts": 222,
+  "caught": 10,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "lifestyle_health",
+  "index": 26,
+  "facts": 224,
+  "caught": 10,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "rag": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": true,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "shop_fashion",
+  "index": 3,
+  "facts": 218,
+  "caught": 6,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": true,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "entertain_shows",
+  "index": 34,
+  "facts": 215,
+  "caught": 5,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "travel_restaurant",
+  "index": 54,
+  "facts": 219,
+  "caught": 5,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": true,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "shop_home",
+  "index": 7,
+  "facts": 217,
+  "caught": 5,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "lifestyle_dietary",
+  "index": 13,
+  "facts": 211,
+  "caught": 2,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "education_resources",
+  "index": 9,
+  "facts": 213,
+  "caught": 4,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "shop_technology",
+  "index": 25,
+  "facts": 220,
+  "caught": 10,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "travel_hotel",
+  "index": 2,
+  "facts": 212,
+  "caught": 8,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": true,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "lifestyle_health",
+  "index": 4,
+  "facts": 211,
+  "caught": 8,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "education_learning_styles",
+  "index": 30,
+  "facts": 212,
+  "caught": 10,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "pet_ownership",
+  "index": 5,
+  "facts": 211,
+  "caught": 1,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "shop_fashion",
+  "index": 52,
+  "facts": 225,
+  "caught": 13,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": true,
+    "correct": false
+   },
+   "ours": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": true,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "entertain_shows",
+  "index": 6,
+  "facts": 221,
+  "caught": 15,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "entertain_music_book",
+  "index": 4,
+  "facts": 211,
+  "caught": 6,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": true,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "education_resources",
+  "index": 25,
+  "facts": 230,
+  "caught": 4,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   }
+  }
+ },
+ {
+  "topic": "shop_home",
+  "index": 36,
+  "facts": 211,
+  "caught": 8,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": false,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "entertain_sports",
+  "index": 37,
+  "facts": 215,
+  "caught": 9,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "rag": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "ours_draft": {
+    "ack": true,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   }
+  }
+ },
+ {
+  "topic": "professional_work_location_style",
+  "index": 27,
+  "facts": 210,
+  "caught": 0,
+  "empty": [],
+  "verdicts": {
+   "zero": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "remind": {
+    "ack": true,
+    "violate": false,
+    "unhelpful": false,
+    "correct": true
+   },
+   "rag": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours_draft": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   },
+   "ours": {
+    "ack": false,
+    "violate": true,
+    "unhelpful": false,
+    "correct": false
+   }
+  }
+ }
+]

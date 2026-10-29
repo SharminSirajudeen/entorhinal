@@ -1,0 +1,302 @@
+{
+  "uid": "309111b3-4d14-46e4-bffd-3841e033a9bf",
+  "sample_index": 10,
+  "session_mode": "full",
+  "session_count": 50,
+  "relevant_session_index": [
+    12,
+    30
+  ],
+  "data_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/data/k0_20_MAIN.json",
+  "output_dir": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/cup_runs10/idx_10/20261028_061341",
+  "embedding_model_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/cup_mem/models/all-MiniLM-L6-v2",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "wire_api": "chat",
+  "loaded_env_files": [
+    "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/STALE/.env"
+  ],
+  "answers": {
+    "dim1_query": "No, the user’s earlier claim that it’s been unusually cold for this time of year no longer holds true, as the premise is outdated due to active indoor temperature regulation (aquarium heater maintaining 76°F) that compensates for outdoor conditions.",
+    "dim2_query": "Your assumption about unusually cold weather doesn't match your current indoor experience, where an aquarium heater maintains 76°F. Since we don't have confirmed outdoor conditions (temperature, wind, precipitation), I can't recommend specific cold-weather clothing or protection. Please check your local outdoor forecast before heading outside for a couple of hours.",
+    "dim3_query": "Your assumption about needing cold-weather gear may no longer be safe—current conditions are unclear due to conflicting signals (unusually cold outdoor weather vs. indoor heating compensation). Without knowing the actual overnight low at your campsite or your personal cold tolerance, I can't confirm if the 0°F bag and pad are necessary or excessive. Check the forecast for your specific site elevation before deciding."
+  },
+  "verdicts": {
+    "dim1_query": "OUTDATED",
+    "dim2_query": "OUTDATED",
+    "dim3_query": "OUTDATED"
+  },
+  "usage_summary": {
+    "total_calls": 595,
+    "cache_hits": 2,
+    "cache_misses": 593,
+    "logical_usage": {
+      "prompt_tokens": 1487384,
+      "completion_tokens": 85266,
+      "total_tokens": 1572650
+    },
+    "billed_usage": {
+      "prompt_tokens": 1484725,
+      "completion_tokens": 84636,
+      "total_tokens": 1569361
+    },
+    "by_phase": {
+      "session_chunker": {
+        "calls": 50,
+        "cache_hits": 0,
+        "cache_misses": 50,
+        "logical_usage": {
+          "prompt_tokens": 104671,
+          "completion_tokens": 12715,
+          "total_tokens": 117386
+        },
+        "billed_usage": {
+          "prompt_tokens": 104671,
+          "completion_tokens": 12715,
+          "total_tokens": 117386
+        }
+      },
+      "delta_extractor": {
+        "calls": 36,
+        "cache_hits": 0,
+        "cache_misses": 36,
+        "logical_usage": {
+          "prompt_tokens": 149461,
+          "completion_tokens": 6862,
+          "total_tokens": 156323
+        },
+        "billed_usage": {
+          "prompt_tokens": 149461,
+          "completion_tokens": 6862,
+          "total_tokens": 156323
+        }
+      },
+      "update_judge": {
+        "calls": 58,
+        "cache_hits": 0,
+        "cache_misses": 58,
+        "logical_usage": {
+          "prompt_tokens": 154017,
+          "completion_tokens": 4273,
+          "total_tokens": 158290
+        },
+        "billed_usage": {
+          "prompt_tokens": 154017,
+          "completion_tokens": 4273,
+          "total_tokens": 158290
+        }
+      },
+      "bucket_bridge_proposer": {
+        "calls": 36,
+        "cache_hits": 0,
+        "cache_misses": 36,
+        "logical_usage": {
+          "prompt_tokens": 65969,
+          "completion_tokens": 3418,
+          "total_tokens": 69387
+        },
+        "billed_usage": {
+          "prompt_tokens": 65969,
+          "completion_tokens": 3418,
+          "total_tokens": 69387
+        }
+      },
+      "latent_invalidation_proposer": {
+        "calls": 127,
+        "cache_hits": 0,
+        "cache_misses": 127,
+        "logical_usage": {
+          "prompt_tokens": 475141,
+          "completion_tokens": 27741,
+          "total_tokens": 502882
+        },
+        "billed_usage": {
+          "prompt_tokens": 475141,
+          "completion_tokens": 27741,
+          "total_tokens": 502882
+        }
+      },
+      "invalidation_judge": {
+        "calls": 66,
+        "cache_hits": 0,
+        "cache_misses": 66,
+        "logical_usage": {
+          "prompt_tokens": 214606,
+          "completion_tokens": 6265,
+          "total_tokens": 220871
+        },
+        "billed_usage": {
+          "prompt_tokens": 214606,
+          "completion_tokens": 6265,
+          "total_tokens": 220871
+        }
+      },
+      "stale_support_judge": {
+        "calls": 194,
+        "cache_hits": 0,
+        "cache_misses": 194,
+        "logical_usage": {
+          "prompt_tokens": 169184,
+          "completion_tokens": 15995,
+          "total_tokens": 185179
+        },
+        "billed_usage": {
+          "prompt_tokens": 169184,
+          "completion_tokens": 15995,
+          "total_tokens": 185179
+        }
+      },
+      "query_parser": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 4520,
+          "completion_tokens": 1313,
+          "total_tokens": 5833
+        },
+        "billed_usage": {
+          "prompt_tokens": 4520,
+          "completion_tokens": 1313,
+          "total_tokens": 5833
+        }
+      },
+      "premise_verifier": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 52674,
+          "completion_tokens": 964,
+          "total_tokens": 53638
+        },
+        "billed_usage": {
+          "prompt_tokens": 52674,
+          "completion_tokens": 964,
+          "total_tokens": 53638
+        }
+      },
+      "query_lane_filter": {
+        "calls": 12,
+        "cache_hits": 2,
+        "cache_misses": 10,
+        "logical_usage": {
+          "prompt_tokens": 16348,
+          "completion_tokens": 3929,
+          "total_tokens": 20277
+        },
+        "billed_usage": {
+          "prompt_tokens": 13689,
+          "completion_tokens": 3299,
+          "total_tokens": 16988
+        }
+      },
+      "premise_verifier_with_evidence": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 67838,
+          "completion_tokens": 910,
+          "total_tokens": 68748
+        },
+        "billed_usage": {
+          "prompt_tokens": 67838,
+          "completion_tokens": 910,
+          "total_tokens": 68748
+        }
+      },
+      "answer_composer": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 4968,
+          "completion_tokens": 316,
+          "total_tokens": 5284
+        },
+        "billed_usage": {
+          "prompt_tokens": 4968,
+          "completion_tokens": 316,
+          "total_tokens": 5284
+        }
+      },
+      "action_grounding_resolver": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 4748,
+          "completion_tokens": 436,
+          "total_tokens": 5184
+        },
+        "billed_usage": {
+          "prompt_tokens": 4748,
+          "completion_tokens": 436,
+          "total_tokens": 5184
+        }
+      },
+      "constraint_builder": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 3239,
+          "completion_tokens": 129,
+          "total_tokens": 3368
+        },
+        "billed_usage": {
+          "prompt_tokens": 3239,
+          "completion_tokens": 129,
+          "total_tokens": 3368
+        }
+      }
+    },
+    "by_query_label": {
+      "dim1_query": {
+        "calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "logical_usage": {
+          "prompt_tokens": 42831,
+          "completion_tokens": 995,
+          "total_tokens": 43826
+        },
+        "billed_usage": {
+          "prompt_tokens": 42831,
+          "completion_tokens": 995,
+          "total_tokens": 43826
+        }
+      },
+      "dim2_query": {
+        "calls": 6,
+        "cache_hits": 0,
+        "cache_misses": 6,
+        "logical_usage": {
+          "prompt_tokens": 49495,
+          "completion_tokens": 1698,
+          "total_tokens": 51193
+        },
+        "billed_usage": {
+          "prompt_tokens": 49495,
+          "completion_tokens": 1698,
+          "total_tokens": 51193
+        }
+      },
+      "dim3_query": {
+        "calls": 6,
+        "cache_hits": 0,
+        "cache_misses": 6,
+        "logical_usage": {
+          "prompt_tokens": 45661,
+          "completion_tokens": 1375,
+          "total_tokens": 47036
+        },
+        "billed_usage": {
+          "prompt_tokens": 45661,
+          "completion_tokens": 1375,
+          "total_tokens": 47036
+        }
+      }
+    }
+  }
+}

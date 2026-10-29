@@ -1,0 +1,302 @@
+{
+  "uid": "36da4cf0-035a-41fc-aae1-5080fe2e2460",
+  "sample_index": 12,
+  "session_mode": "full",
+  "session_count": 50,
+  "relevant_session_index": [
+    5,
+    36
+  ],
+  "data_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/data/k0_20_MAIN.json",
+  "output_dir": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/cup_runs10/idx_12/20261028_062641",
+  "embedding_model_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/cup_mem/models/all-MiniLM-L6-v2",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "wire_api": "chat",
+  "loaded_env_files": [
+    "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/STALE/.env"
+  ],
+  "answers": {
+    "dim1_query": "No, the user no longer has a long-term partner whose needs and availability they generally consider when making plans.",
+    "dim2_query": "I cannot suggest date-night ideas for the next month because I lack current confirmation that you are in a long-term relationship, that you consider your partner when making plans, or details about your partner’s schedule availability.",
+    "dim3_query": "Your assumption about being able to reliably arrange flights and PTO later is outdated given your current schedule and shifted priorities. Without clarity on resource availability and scheduling feasibility, locking in a non-refundable deposit now risks financial loss if plans change."
+  },
+  "verdicts": {
+    "dim1_query": "OUTDATED",
+    "dim2_query": "UNRESOLVED",
+    "dim3_query": "OUTDATED"
+  },
+  "usage_summary": {
+    "total_calls": 689,
+    "cache_hits": 2,
+    "cache_misses": 687,
+    "logical_usage": {
+      "prompt_tokens": 1872094,
+      "completion_tokens": 98700,
+      "total_tokens": 1970794
+    },
+    "billed_usage": {
+      "prompt_tokens": 1869360,
+      "completion_tokens": 98050,
+      "total_tokens": 1967410
+    },
+    "by_phase": {
+      "session_chunker": {
+        "calls": 50,
+        "cache_hits": 0,
+        "cache_misses": 50,
+        "logical_usage": {
+          "prompt_tokens": 104650,
+          "completion_tokens": 14361,
+          "total_tokens": 119011
+        },
+        "billed_usage": {
+          "prompt_tokens": 104650,
+          "completion_tokens": 14361,
+          "total_tokens": 119011
+        }
+      },
+      "delta_extractor": {
+        "calls": 44,
+        "cache_hits": 0,
+        "cache_misses": 44,
+        "logical_usage": {
+          "prompt_tokens": 184679,
+          "completion_tokens": 7581,
+          "total_tokens": 192260
+        },
+        "billed_usage": {
+          "prompt_tokens": 184679,
+          "completion_tokens": 7581,
+          "total_tokens": 192260
+        }
+      },
+      "update_judge": {
+        "calls": 63,
+        "cache_hits": 0,
+        "cache_misses": 63,
+        "logical_usage": {
+          "prompt_tokens": 188773,
+          "completion_tokens": 4740,
+          "total_tokens": 193513
+        },
+        "billed_usage": {
+          "prompt_tokens": 188773,
+          "completion_tokens": 4740,
+          "total_tokens": 193513
+        }
+      },
+      "bucket_bridge_proposer": {
+        "calls": 42,
+        "cache_hits": 0,
+        "cache_misses": 42,
+        "logical_usage": {
+          "prompt_tokens": 75346,
+          "completion_tokens": 3649,
+          "total_tokens": 78995
+        },
+        "billed_usage": {
+          "prompt_tokens": 75346,
+          "completion_tokens": 3649,
+          "total_tokens": 78995
+        }
+      },
+      "latent_invalidation_proposer": {
+        "calls": 154,
+        "cache_hits": 0,
+        "cache_misses": 154,
+        "logical_usage": {
+          "prompt_tokens": 614826,
+          "completion_tokens": 33383,
+          "total_tokens": 648209
+        },
+        "billed_usage": {
+          "prompt_tokens": 614826,
+          "completion_tokens": 33383,
+          "total_tokens": 648209
+        }
+      },
+      "invalidation_judge": {
+        "calls": 79,
+        "cache_hits": 0,
+        "cache_misses": 79,
+        "logical_usage": {
+          "prompt_tokens": 298390,
+          "completion_tokens": 7301,
+          "total_tokens": 305691
+        },
+        "billed_usage": {
+          "prompt_tokens": 298390,
+          "completion_tokens": 7301,
+          "total_tokens": 305691
+        }
+      },
+      "stale_support_judge": {
+        "calls": 227,
+        "cache_hits": 0,
+        "cache_misses": 227,
+        "logical_usage": {
+          "prompt_tokens": 195898,
+          "completion_tokens": 17847,
+          "total_tokens": 213745
+        },
+        "billed_usage": {
+          "prompt_tokens": 195898,
+          "completion_tokens": 17847,
+          "total_tokens": 213745
+        }
+      },
+      "query_parser": {
+        "calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "logical_usage": {
+          "prompt_tokens": 7074,
+          "completion_tokens": 1853,
+          "total_tokens": 8927
+        },
+        "billed_usage": {
+          "prompt_tokens": 7074,
+          "completion_tokens": 1853,
+          "total_tokens": 8927
+        }
+      },
+      "premise_verifier": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 75325,
+          "completion_tokens": 1260,
+          "total_tokens": 76585
+        },
+        "billed_usage": {
+          "prompt_tokens": 75325,
+          "completion_tokens": 1260,
+          "total_tokens": 76585
+        }
+      },
+      "query_lane_filter": {
+        "calls": 13,
+        "cache_hits": 2,
+        "cache_misses": 11,
+        "logical_usage": {
+          "prompt_tokens": 19807,
+          "completion_tokens": 4329,
+          "total_tokens": 24136
+        },
+        "billed_usage": {
+          "prompt_tokens": 17073,
+          "completion_tokens": 3679,
+          "total_tokens": 20752
+        }
+      },
+      "premise_verifier_with_evidence": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 93525,
+          "completion_tokens": 1599,
+          "total_tokens": 95124
+        },
+        "billed_usage": {
+          "prompt_tokens": 93525,
+          "completion_tokens": 1599,
+          "total_tokens": 95124
+        }
+      },
+      "answer_composer": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 5561,
+          "completion_tokens": 268,
+          "total_tokens": 5829
+        },
+        "billed_usage": {
+          "prompt_tokens": 5561,
+          "completion_tokens": 268,
+          "total_tokens": 5829
+        }
+      },
+      "action_grounding_resolver": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 4485,
+          "completion_tokens": 305,
+          "total_tokens": 4790
+        },
+        "billed_usage": {
+          "prompt_tokens": 4485,
+          "completion_tokens": 305,
+          "total_tokens": 4790
+        }
+      },
+      "constraint_builder": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 3755,
+          "completion_tokens": 224,
+          "total_tokens": 3979
+        },
+        "billed_usage": {
+          "prompt_tokens": 3755,
+          "completion_tokens": 224,
+          "total_tokens": 3979
+        }
+      }
+    },
+    "by_query_label": {
+      "dim1_query": {
+        "calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "logical_usage": {
+          "prompt_tokens": 55924,
+          "completion_tokens": 1208,
+          "total_tokens": 57132
+        },
+        "billed_usage": {
+          "prompt_tokens": 55924,
+          "completion_tokens": 1208,
+          "total_tokens": 57132
+        }
+      },
+      "dim2_query": {
+        "calls": 6,
+        "cache_hits": 0,
+        "cache_misses": 6,
+        "logical_usage": {
+          "prompt_tokens": 65483,
+          "completion_tokens": 1369,
+          "total_tokens": 66852
+        },
+        "billed_usage": {
+          "prompt_tokens": 65483,
+          "completion_tokens": 1369,
+          "total_tokens": 66852
+        }
+      },
+      "dim3_query": {
+        "calls": 7,
+        "cache_hits": 0,
+        "cache_misses": 7,
+        "logical_usage": {
+          "prompt_tokens": 68318,
+          "completion_tokens": 2932,
+          "total_tokens": 71250
+        },
+        "billed_usage": {
+          "prompt_tokens": 68318,
+          "completion_tokens": 2932,
+          "total_tokens": 71250
+        }
+      }
+    }
+  }
+}

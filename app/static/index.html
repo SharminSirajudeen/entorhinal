@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Entorhinal</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<main class="layout">
+<header class="masthead">
+  <div class="intro">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle class="hub" cx="16" cy="16" r="3.2"/>
+        <circle cx="25" cy="16" r="2.4"/><circle cx="20.5" cy="23.8" r="2.4"/><circle cx="11.5" cy="23.8" r="2.4"/>
+        <circle cx="7" cy="16" r="2.4"/><circle cx="11.5" cy="8.2" r="2.4"/><circle cx="20.5" cy="8.2" r="2.4"/>
+      </svg>
+      <h1>Entorhinal</h1>
+    </div>
+    <p class="lede">A memory for your AI that notices when something new makes an old fact untrue, and checks your question against it before answering.</p>
+    <form class="try" id="try">
+      <label class="field">
+        <span class="label">See it work</span>
+        <span class="select"><select id="example"></select></span>
+      </label>
+      <button id="run-example" class="primary" type="submit">Load this memory</button>
+    </form>
+    <p class="note">A recorded memory was built by this pipeline in our STALE run and loads with no model call. A live example sends two short sessions to Nemotron while you watch. Either one replaces your memory.</p>
+    <p class="note">Your sessions and questions are sent to NVIDIA Nemotron models on Nebius Token Factory to be read and answered. Your memory is kept on this server apart from every other visitor's, found by one cookie, and deleted 24 hours after your first visit; Export and Delete everything are below.</p>
+  </div>
+  <section class="stats" aria-labelledby="stats-title">
+    <h2 id="stats-title">Measured on STALE, a public benchmark for this failure</h2>
+    <dl>
+      <div class="stat ours"><dt>questions right with this memory</dt><dd><b data-stat="ours">18/36</b></dd></div>
+      <div class="stat"><dt>Nemotron 3.5 Lightning reading the whole history</dt><dd><b data-stat="flat">2/36</b></dd></div>
+      <div class="stat"><dt>out-of-date premises refused</dt><dd><b data-stat="pr">6/12</b><span>against 0/12 reading the whole history</span></dd></div>
+    </dl>
+    <p class="note">12 STALE scenarios (arXiv 2605.06527) that none of our fixes were made on; judge: Nemotron 3 Ultra with STALE's own prompt. The full table is under How it works.</p>
+  </section>
+</header>
+
+  <section class="panel compare" id="compare" hidden aria-labelledby="compare-title">
+    <h2 id="compare-title">Same question, two systems</h2>
+    <p class="hint" id="compare-meta"></p>
+    <blockquote class="question" id="compare-question"></blockquote>
+    <div class="sides">
+      <article class="side" data-side="flat" aria-labelledby="flat-title">
+        <h3 id="flat-title">Nemotron 3.5 Lightning, reading the whole history</h3>
+        <p class="side-how" id="flat-how"></p>
+        <p class="said-text" id="flat-text"></p>
+        <p class="verdict" id="flat-verdict"></p>
+      </article>
+      <article class="side" data-side="ours" aria-labelledby="ours-title">
+        <h3 id="ours-title">Entorhinal</h3>
+        <p class="side-how" id="ours-how"></p>
+        <div class="check">
+          <h4>Checked before answering</h4>
+          <div id="ours-report" class="report"></div>
+        </div>
+        <p class="said-text" id="ours-text"></p>
+        <p class="verdict" id="ours-verdict"></p>
+      </article>
+    </div>
+    <p class="hint">Both answers were recorded in our STALE benchmark run and marked by the same judge: Nemotron 3 Ultra with STALE's own prompt. Ask it live, below, to run the check and the answer again now.</p>
+  </section>
+
+  <div class="bench">
+  <section class="panel engine" id="engine" aria-labelledby="engine-title">
+    <div class="engine-head">
+      <h2 id="engine-title">Live pipeline</h2>
+      <p class="total" id="total">Idle</p>
+    </div>
+    <div class="stage" id="stage">
+      <p class="stage-note stage-empty">Your memory is empty. Run an example or add a session: each fact appears here, placed in time.</p>
+      <p class="stage-note stage-nogl">This view needs WebGL. Every step still shows below.</p>
+    </div>
+    <div class="tracks">
+      <div class="track" data-path="add">
+        <h3>Add</h3>
+        <ol aria-label="Adding a session">
+          <li class="step" data-step="S4" data-model data-doing="Lightning is reading the session"><span class="dot"></span><span class="name">Extract<small>Lightning</small></span><span class="took"></span><span class="said"></span></li>
+          <li class="step" data-step="S5" data-doing="Finding older facts on the same subjects"><span class="dot"></span><span class="name">Relate<small>lookup</small></span><span class="took"></span><span class="said"></span></li>
+          <li class="step" data-step="S6" data-model data-doing="Super is judging what the session makes untrue"><span class="dot"></span><span class="name">Judge<small>Super, thinking</small></span><span class="took"></span><span class="said"></span></li>
+          <li class="step" data-step="Store" data-doing="Saving"><span class="dot"></span><span class="name">Save<small>Store</small></span><span class="took"></span><span class="said"></span></li>
+        </ol>
+      </div>
+      <div class="track" data-path="ask">
+        <h3>Ask</h3>
+        <ol aria-label="Answering a question">
+          <li class="step" data-step="S8" data-model data-doing="Super is checking what the question assumes"><span class="dot"></span><span class="name">Check<small>Super, thinking</small></span><span class="took"></span><span class="said"></span></li>
+          <li class="step" data-step="S9" data-model data-doing="Super is writing the answer"><span class="dot"></span><span class="name">Answer<small>Super</small></span><span class="took"></span><span class="said"></span></li>
+        </ol>
+      </div>
+    </div>
+    <h3 class="log-title">Log</h3>
+    <div class="log" role="log" aria-label="Pipeline log" tabindex="0">
+      <ol id="log"></ol>
+      <p class="log-empty">Each step appears here as it runs: the model, how long it took, its tokens and its cost.</p>
+    </div>
+  </section>
+
+  <section class="panel memory" aria-labelledby="timeline-title">
+    <h2 id="timeline-title">Timeline</h2>
+    <p class="hint">Every fact, oldest first. A struck-through fact was made untrue by a newer one.</p>
+    <p class="counts" id="counts"></p>
+    <label class="only"><input id="only-stale" type="checkbox"> Only the facts made untrue</label>
+    <ol id="timeline" class="timeline"></ol>
+  </section>
+
+  <section class="panel ask" aria-labelledby="ask-title">
+    <h2 id="ask-title">Ask it live</h2>
+    <p class="hint">Nemotron 3 Super checks the question against the memory above, then answers, now.</p>
+    <form class="form ask-row">
+      <label class="field">
+        <span class="label">Question</span>
+        <input id="question" required placeholder="Which route should I bike tomorrow?">
+      </label>
+      <button id="ask" class="primary" type="submit">Ask</button>
+    </form>
+    <section id="answer" class="answer" hidden aria-labelledby="answer-title">
+      <div class="check">
+        <h3>Checked before answering</h3>
+        <div id="report"></div>
+      </div>
+      <h3 id="answer-title">Answer</h3>
+      <p id="answer-text"></p>
+    </section>
+  </section>
+
+  <section class="panel compose" aria-labelledby="add-title">
+    <h2 id="add-title">Add your own session</h2>
+    <p class="hint">What you told your AI, and when. Sessions go in date order, after the newest one in your memory.</p>
+    <form class="form">
+      <label class="field">
+        <span class="label">Date and time</span>
+        <input id="time" type="datetime-local" required>
+      </label>
+      <label class="field">
+        <span class="label">Session</span>
+        <textarea id="text" rows="3" required placeholder="What you told your AI in this session"></textarea>
+      </label>
+      <div class="actions">
+        <span class="hint">⌘ or Ctrl + Return adds it.</span>
+        <button id="add" class="primary" type="submit">Add session</button>
+      </div>
+    </form>
+  </section>
+  </div>
+
+  <section class="panel how" id="how" aria-labelledby="how-title">
+    <h2 id="how-title">How it works</h2>
+    <p class="how-lede">If a memory only adds facts and retrieves them, a fact that a newer session has made untrue is still retrieved, and the model answers from it: directly changed (you moved city) or changed by consequence (a leg in a cast ends the daily bike ride). STALE measures exactly this failure. Entorhinal makes <em>no longer true</em> a state in the memory, decided by a model when the change arrives, and checks every question's assumptions against it before answering.</p>
+    <div class="how-grid">
+      <article>
+        <h3>Data model</h3>
+        <p><code>Fact(id, subject, attribute, value, time, source_idx, status, invalidated_by, reason)</code>, with <code>status</code> held to <code>active</code> or <code>stale</code> by a CHECK constraint, in one SQLite file per user. A fact that goes stale is kept, never deleted: it carries the id of the fact that replaced it and the judge's one-sentence reason, so every correction can be traced to the session that caused it.</p>
+      </article>
+      <article>
+        <h3>Write path, once per session</h3>
+        <ol class="how-steps">
+          <li data-cap="S4"><b>Extract.</b> Nemotron 3.5 Lightning, JSON mode, up to 1,500 output tokens: every fact the user reveals, dated with the session time.</li>
+          <li><b>Relate.</b> Every active fact on a subject the new facts touch or name, oldest first, with no cap: in a pilot, a cap of the 40 newest hid the very fact a session changed.</li>
+          <li data-cap="S6"><b>Judge.</b> Nemotron 3 Super, reasoning on, up to 12,000 output tokens: only the old facts the session makes untrue, implied consequences included, each with a verdict, the new fact that caused it and a reason.</li>
+          <li><b>Store.</b> Each such fact is rewritten in place as stale, linked to its cause (INSERT OR REPLACE by id).</li>
+        </ol>
+      </article>
+      <article>
+        <h3>Read path, once per question</h3>
+        <ol class="how-steps">
+          <li data-cap="S8"><b>Check.</b> Nemotron 3 Super, reasoning on, up to 8,000 output tokens: each assumption the question makes about the user's situation now, marked SAFE, OUTDATED or UNRESOLVED. "Not mentioned" is never OUTDATED, and OUTDATED names the stale fact it rests on.</li>
+          <li data-cap="S9"><b>Answer.</b> Nemotron 3 Super, reasoning off, up to 2,000 output tokens: an outdated assumption is corrected first, citing the newer fact and its date, then the question is answered for the user's situation now.</li>
+        </ol>
+      </article>
+      <article>
+        <h3>Failure, replay and cost</h3>
+        <p>A reply that does not parse yields no facts and no decisions, never an exception. A reply cut off at its token cap is refused, never half-applied, yet billed and counted against the day's spend cap. Every benchmark call is recorded under the SHA-256 of its request body; with <code>REPLAY=1</code> a missing recording is an error, so the test suite and the three recorded memories above re-run for $0. At list prices per million tokens (Lightning $0.06 in, $0.24 out; Super $0.30 in, $0.90 out), building one 50-session memory cost about $0.37 in our run, and one question cost $0.009 to $0.012 there (a live one on 29 Oct, on the design-subscription memory: $0.016).</p>
+      </article>
+    </div>
+    <h3 class="how-sub">Measured</h3>
+    <p class="hint">12 STALE scenarios (seed 11, six of each type) that none of our fixes were made on, all three probing questions each; judge: Nemotron 3 Ultra with STALE's own prompt, temperature 0. Type 1 is a direct change, Type 2 an implied consequence. SR: knows the old fact may be outdated. PR: refuses a stale premise. IPA: plans for the new situation.</p>
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Results by type and question">
+      <table>
+        <thead><tr><th scope="col"></th><th scope="col">T1 SR</th><th scope="col">T1 PR</th><th scope="col">T1 IPA</th><th scope="col">T2 SR</th><th scope="col">T2 PR</th><th scope="col">T2 IPA</th><th scope="col">Correct</th></tr></thead>
+        <tbody>
+          <tr data-row="flat"><th scope="row">Nemotron 3.5 Lightning, whole history</th><td>0/6</td><td>0/6</td><td>2/6</td><td>0/6</td><td>0/6</td><td>0/6</td><td>2/36</td></tr>
+          <tr data-row="ours"><th scope="row">Entorhinal</th><td>3/6</td><td>4/6</td><td>5/6</td><td>2/6</td><td>2/6</td><td>2/6</td><td>18/36</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="how-sub">Limits</h3>
+    <ul class="limits">
+      <li>12 scenarios is a small sample: on 9 others, grading the same answers twice moved PR from 6/9 to 7/9.</li>
+      <li>Type 2, the implied consequence, is the weak side: 6/18 against Type 1's 12/18.</li>
+      <li>On long memories the change judge also marks some unrelated facts untrue; "Only the facts made untrue" shows them.</li>
+      <li>In the run, 52 change-judge calls stopped at their token cap and were refused, so their sessions may hold changes the memory never recorded.</li>
+      <li>The change judge reads every active fact on the subject each session, so its input grows with the memory.</li>
+    </ul>
+    <p class="hint">Hosting: one SQLite file per browser, found by an HttpOnly cookie and deleted after 24 hours; the page makes no request to any other origin (CSP <code>default-src 'self'</code>); a daily spend cap refuses new work once reached. The code, the reports and every recorded reply are in the entorhinal repository on GitHub.</p>
+  </section>
+
+  <section class="data" aria-labelledby="data-title">
+    <h2 id="data-title">Your data</h2>
+    <a id="export" class="quiet" href="/export" download="memory.json">Export</a>
+    <button id="delete" class="quiet danger" type="button">Delete everything</button>
+  </section>
+</main>
+<p id="status" role="status"></p>
+<script type="module" src="/app.js"></script>
+</body>
+</html>

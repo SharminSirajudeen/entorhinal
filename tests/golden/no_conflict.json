@@ -1,0 +1,35 @@
+{
+ "_rule": "Expected values are derived by hand. 'stale': a stale fact whose subject/attribute/value contains any 'old' string, invalidated_by an active fact containing any 'by' string (case-insensitive). 'active': each string is found in some active fact. 'premise_flagged': whether the premise report flags anything. 'answer_has': each string appears in the answer.",
+ "sessions": [
+  {
+   "idx": 0,
+   "time": "2026-02-10 12:00",
+   "turns": [
+    {
+     "role": "user",
+     "content": "I work at a bakery downtown, mostly the morning shift."
+    }
+   ]
+  },
+  {
+   "idx": 1,
+   "time": "2026-02-24 18:40",
+   "turns": [
+    {
+     "role": "user",
+     "content": "I just adopted a cat from the shelter, she's three years old."
+    }
+   ]
+  }
+ ],
+ "question": "Can you suggest a small gift for my coworkers at the bakery?",
+ "expected": {
+  "stale": [],
+  "active": [
+   "bakery",
+   "cat"
+  ],
+  "premise_flagged": false,
+  "answer_has": []
+ }
+}

@@ -1,0 +1,32 @@
+[project]
+name = "entorhinal"
+version = "0.1.0"
+description = "A personal AI memory that notices when a new fact makes an old one untrue."
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest", "ruff"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+# docs/reports/*/ hold the exact scripts that produced each report's numbers; reformatting one breaks that record
+extend-exclude = ["docs", "data"]
+
+[tool.ruff.lint]
+preview = true  # PLR1702 (nesting) is a preview rule
+explicit-preview-rules = true
+select = ["E", "F", "W", "C901", "PLR0915", "PLR1702"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.pylint]
+max-statements = 40
+max-nested-blocks = 3
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"
+pythonpath = ["."]

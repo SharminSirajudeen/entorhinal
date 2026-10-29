@@ -1,0 +1,234 @@
+<title>STALE Pilot K0</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a single reading column for a lab-style run report, with wide tables in their own scrollers. */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#18202b; --muted:#5b6676; --line:#dfe3ea;
+  --accent:#1f5fae; --base:#9aa5b4; --pass:#1d7a4f; --fail:#b3412f;
+  --display: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --body: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono: ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11161d; --panel:#18202a; --ink:#e6eaf0; --muted:#9aa6b6; --line:#2a3542;
+  --accent:#6aa7f0; --base:#5f6b7a; --pass:#4fc28a; --fail:#ec7a66; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161d; --panel:#18202a; --ink:#e6eaf0; --muted:#9aa6b6; --line:#2a3542;
+  --accent:#6aa7f0; --base:#5f6b7a; --pass:#4fc28a; --fail:#ec7a66; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--body)}
+.wrap{max-width:900px;margin:0 auto;padding-block:32px 64px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:36px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;font-weight:600}
+h1{font-size:2.1rem;line-height:1.15}
+h2{font-size:1.35rem;border-bottom:1px solid var(--line);padding-bottom:6px}
+p{margin:0;max-width:68ch}
+.eyebrow{font:600 .75rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.head{display:flex;flex-direction:column;gap:10px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted);font-size:.85rem}
+section{display:flex;flex-direction:column;gap:14px;min-width:0}
+.verdict{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.verdict strong{color:var(--pass)}
+.pill{align-self:flex-start;font:600 .72rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--pass);border:1px solid var(--pass);border-radius:999px;padding:4px 8px}
+.big{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.stat .n{font:600 1.6rem/1.2 var(--mono);font-variant-numeric:tabular-nums}
+.stat .n span{color:var(--muted);font-size:1rem}
+.stat .l{color:var(--muted);font-size:.85rem}
+.bars{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.bar-row{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center}
+.bar-row .name{font-size:.88rem}
+.track{display:flex;flex-direction:column;gap:4px}
+.b{height:14px;border-radius:2px;display:flex;align-items:center}
+.b i{font:600 .72rem/1 var(--mono);font-style:normal;margin-left:calc(100% + 6px);white-space:nowrap;color:var(--ink)}
+.b.base{background:var(--base)} .b.ours{background:var(--accent)}
+.legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.legend .lb::before{background:var(--base)} .legend .lo::before{background:var(--accent)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:.85rem;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+.mono{font-family:var(--mono)}
+.ok{color:var(--pass);font-weight:700} .no{color:var(--fail)}
+.dims{font-family:var(--mono);letter-spacing:.12em;white-space:nowrap}
+.hi td{background:color-mix(in srgb,var(--accent) 8%,transparent)}
+ol,ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;max-width:70ch}
+code{font-family:var(--mono);font-size:.85em;background:color-mix(in srgb,var(--line) 60%,transparent);padding:1px 4px;border-radius:3px}
+.note{color:var(--muted);font-size:.85rem}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.step b{font-size:.92rem}
+.step .m{font:600 .72rem/1.3 var(--mono);color:var(--accent)}
+@media (max-width:520px){.bar-row{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+
+<header class="head">
+  <div class="eyebrow">Nebius × NVIDIA hackathon · Personal AI track · Pilot run</div>
+  <h1>STALE Pilot K0</h1>
+  <p>Can a personal AI built on Nemotron notice when something new in a person's life quietly makes an old memory untrue, and refuse to act on the stale one? This is the first measured run, on the public STALE benchmark.</p>
+  <div class="meta"><span>Run: 28 Oct 2026, on Nebius Token Factory</span><span>Benchmark: STALE (arXiv 2605.06527)</span><span>20 scenarios, seed 7</span></div>
+</header>
+
+<div class="verdict">
+  <span class="pill">Passed</span>
+  <p><strong>Kill test passed.</strong> The rule written before the run said: continue only if our approach beats plain Nemotron on Premise Resistance. It did, 0 of 20 → 8 of 20.</p>
+  <p class="note">Premise Resistance means the AI refuses a question built on a fact that is no longer true. On the paper's table, memory products score 0–2% on it.</p>
+</div>
+
+<section>
+  <h2>Headline numbers</h2>
+  <div class="big">
+    <div class="stat"><div class="n">0 → 8 <span>of 20</span></div><div class="l">Refuses a stale assumption (Premise Resistance)</div></div>
+    <div class="stat"><div class="n">10.0% → 48.3%</div><div class="l">Overall, all 60 graded answers</div></div>
+    <div class="stat"><div class="n">1 → 11 <span>of 20</span></div><div class="l">Knows an old fact may be outdated (State Resolution)</div></div>
+    <div class="stat"><div class="n">5 → 10 <span>of 20</span></div><div class="l">Plans for the new situation (Implicit Policy Adaptation)</div></div>
+  </div>
+  <div class="bars" role="img" aria-label="Correct answers out of 20, baseline versus ours, per question type">
+    <div class="legend"><span class="lb">Baseline: Nemotron reads the full history</span><span class="lo">Ours: memory pipeline</span></div>
+    <div class="bar-row"><div class="name">State Resolution</div><div class="track"><div class="b base" style="width:5%"><i>1</i></div><div class="b ours" style="width:55%"><i>11</i></div></div></div>
+    <div class="bar-row"><div class="name">Premise Resistance</div><div class="track"><div class="b base" style="width:0.6%"><i>0</i></div><div class="b ours" style="width:40%"><i>8</i></div></div></div>
+    <div class="bar-row"><div class="name">Policy Adaptation</div><div class="track"><div class="b base" style="width:25%"><i>5</i></div><div class="b ours" style="width:50%"><i>10</i></div></div></div>
+    <div class="note">Bar length = correct answers out of 20 (full width = 20).</div>
+  </div>
+</section>
+
+<section>
+  <h2>Results by conflict type</h2>
+  <p class="note">STALE has two kinds of change. Type I changes the fact directly (new working hours). Type II changes it through a consequence (a legal name change makes a card in the old name outdated). 10 scenarios of each.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Condition</th><th class="num">SR · T1</th><th class="num">SR · T2</th><th class="num">PR · T1</th><th class="num">PR · T2</th><th class="num">IPA · T1</th><th class="num">IPA · T2</th><th class="num">Overall</th></tr></thead>
+    <tbody>
+      <tr><td>Baseline: Lightning reads ~150K tokens of history</td><td class="num">0/10</td><td class="num">1/10</td><td class="num">0/10</td><td class="num">0/10</td><td class="num">2/10</td><td class="num">3/10</td><td class="num">6/60 · 10.0%</td></tr>
+      <tr class="hi"><td><b>Ours</b> (crude pipeline, below)</td><td class="num">7/10</td><td class="num">4/10</td><td class="num"><b>5/10</b></td><td class="num"><b>3/10</b></td><td class="num">5/10</td><td class="num">5/10</td><td class="num"><b>29/60 · 48.3%</b></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Published scores, for context</h2>
+  <p class="note">From the STALE paper's own table (read 28 Oct). Their grader was Gemini-3.1-flash-lite; ours was Nemotron Ultra. These rows are theirs, not comparable one-to-one with ours.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>System</th><th class="num">PR · Type I</th><th class="num">PR · Type II</th><th class="num">Overall</th></tr></thead>
+    <tbody>
+      <tr><td>Zep</td><td class="num">0.0%</td><td class="num">1.0%</td><td class="num">6.0%</td></tr>
+      <tr><td>mem-0</td><td class="num">1.0%</td><td class="num">0.0%</td><td class="num">8.3%</td></tr>
+      <tr><td>GPT-5.4</td><td class="num">2.0%</td><td class="num">2.0%</td><td class="num">15.7%</td></tr>
+      <tr><td>Claude-Opus-4.6</td><td class="num">10.0%</td><td class="num">9.0%</td><td class="num">28.3%</td></tr>
+      <tr><td>Gemini-3.1-pro</td><td class="num">30.0%</td><td class="num">14.0%</td><td class="num">55.2%</td></tr>
+      <tr><td>CUPMem (the paper's authors' research system)</td><td class="num">78.0%</td><td class="num">75.0%</td><td class="num">68.0%</td></tr>
+      <tr class="hi"><td><b>Ours, this pilot</b> (Ultra grader, n=20)</td><td class="num">50%</td><td class="num">30%</td><td class="num">48.3%</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>What ran</h2>
+  <div class="flow">
+    <div class="step"><span class="m">1 · Nemotron 3.5 Lightning · thinking off</span><b>Read each session</b><span class="note">Each of ~50 sessions is read separately, and the facts the user reveals are listed with the session's date. About 50 small calls per scenario.</span></div>
+    <div class="step"><span class="m">2 · Nemotron 3 Ultra · thinking on</span><b>Find what changed</b><span class="note">Ultra reads the dated fact list and names every older fact that a later one makes untrue, including implicit consequences.</span></div>
+    <div class="step"><span class="m">3 · Nemotron 3 Super 120B · thinking off</span><b>Answer, checking assumptions</b><span class="note">List the question's assumptions, check each against the newest facts, correct any stale one with its date, then answer.</span></div>
+  </div>
+  <ul>
+    <li><b>Baseline:</b> Nemotron 3.5 Lightning gets the whole history (150,149–168,827 tokens; average 158,649) and answers. STALE's own prompts and history format, unchanged.</li>
+    <li><b>Grader:</b> Nemotron 3 Ultra with STALE's own judge prompt, unchanged, temperature 0, JSON output. One call per scenario per condition grades all three answers.</li>
+    <li><b>Sample:</b> 20 of the 400 scenarios, drawn with a fixed seed (7): 10 Type I, 10 Type II. All three question types per scenario (60 graded answers per condition).</li>
+    <li><b>Setting that mattered:</b> <code>chat_template_kwargs.enable_thinking = false</code> on every call except step 2. Without it, Nemotron writes its thinking into the answer text and runs out of space.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Every scenario</h2>
+  <p class="note">✓ = graded correct. Three marks per condition: State Resolution, Premise Resistance, Policy Adaptation. Cost covers both conditions and both gradings for that scenario.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>ID</th><th>Type</th><th>The hidden change</th><th class="num">History tokens</th><th>Baseline</th><th>Ours</th><th class="num">Cost</th></tr></thead>
+    <tbody>
+<tr><td class="mono">f40ff9ce</td><td>T1</td><td>Working hours moved to about 12:00–20:00</td><td class="num">165,345</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="ok">✓✓</span><span class="no">✗</span></td><td class="num">$0.125</td></tr>
+<tr><td class="mono">7d6f2e0b</td><td>T1</td><td>Religious affiliation changed (Anglican → Roman Catholic)</td><td class="num">162,024</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="ok">✓✓✓</span></td><td class="num">$0.128</td></tr>
+<tr><td class="mono">0c0086f5</td><td>T1</td><td>Deep-focus window moved to late afternoon</td><td class="num">160,762</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="no">✗✗✗</span></td><td class="num">$0.125</td></tr>
+<tr><td class="mono">f3259991</td><td>T1</td><td>Main work shifted to business travel and on-site client work</td><td class="num">150,715</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="ok">✓</span><span class="no">✗</span><span class="ok">✓</span></td><td class="num">$0.109</td></tr>
+<tr><td class="mono">3ab1d7a5</td><td>T1</td><td>Now in a timezone 5 hours ahead of the client</td><td class="num">156,102</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="no">✗✗✗</span></td><td class="num">$0.125</td></tr>
+<tr><td class="mono">28d56b63</td><td>T1</td><td>Home moved from 8,000 ft altitude to near sea level</td><td class="num">151,040</td><td class="dims"><span class="no">✗✗</span><span class="ok">✓</span></td><td class="dims"><span class="ok">✓✓✓</span></td><td class="num">$0.119</td></tr>
+<tr><td class="mono">406b17a1</td><td>T1</td><td>Higher risk tolerance, more comfort with spontaneity</td><td class="num">155,653</td><td class="dims"><span class="no">✗✗</span><span class="ok">✓</span></td><td class="dims"><span class="ok">✓</span><span class="no">✗</span><span class="ok">✓</span></td><td class="num">$0.109</td></tr>
+<tr><td class="mono">e72a2ba5</td><td>T1</td><td>Planned stay is now only a few more weeks</td><td class="num">160,444</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="ok">✓✓✓</span></td><td class="num">$0.126</td></tr>
+<tr><td class="mono">d92e9cf7</td><td>T1</td><td>Screen time grew well beyond the old 1-hour nightly cap</td><td class="num">164,449</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="no">✗✗✗</span></td><td class="num">$0.126</td></tr>
+<tr><td class="mono">aeaa726a</td><td>T1</td><td>Fully recovered from a fracture, mobility no longer limited</td><td class="num">168,827</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="ok">✓✓</span><span class="no">✗</span></td><td class="num">$0.127</td></tr>
+<tr><td class="mono">309111b3</td><td>T2</td><td>Local season turned to sustained warmth</td><td class="num">161,714</td><td class="dims"><span class="ok">✓</span><span class="no">✗</span><span class="ok">✓</span></td><td class="dims"><span class="ok">✓</span><span class="no">✗</span><span class="ok">✓</span></td><td class="num">$0.125</td></tr>
+<tr><td class="mono">16763588</td><td>T2</td><td>Wrist immobilised, so grip-dependent activities are out</td><td class="num">150,149</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="no">✗</span><span class="ok">✓</span><span class="no">✗</span></td><td class="num">$0.107</td></tr>
+<tr><td class="mono">36da4cf0</td><td>T2</td><td>No longer has a constant support person at home</td><td class="num">154,801</td><td class="dims"><span class="no">✗✗</span><span class="ok">✓</span></td><td class="dims"><span class="no">✗✗</span><span class="ok">✓</span></td><td class="num">$0.111</td></tr>
+<tr><td class="mono">fb5ebe60</td><td>T2</td><td>Legal residency changed (licence and voter registration moved)</td><td class="num">159,264</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="no">✗✗✗</span></td><td class="num">$0.107</td></tr>
+<tr><td class="mono">d31a1e17</td><td>T2</td><td>Moved into an apartment near the office</td><td class="num">158,756</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="no">✗</span><span class="ok">✓</span><span class="no">✗</span></td><td class="num">$0.123</td></tr>
+<tr><td class="mono">3e3af301</td><td>T2</td><td>Device recovery changed to a full wipe and selective restore</td><td class="num">155,610</td><td class="dims"><span class="no">✗✗</span><span class="ok">✓</span></td><td class="dims"><span class="no">✗✗</span><span class="ok">✓</span></td><td class="num">$0.125</td></tr>
+<tr><td class="mono">0a5d90e4</td><td>T2</td><td>Switched to overnight shift work</td><td class="num">162,037</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="ok">✓</span><span class="no">✗✗</span></td><td class="num">$0.116</td></tr>
+<tr><td class="mono">a0ecb191</td><td>T2</td><td>Moved to a unit on a quiet courtyard with controlled access</td><td class="num">162,533</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="ok">✓</span><span class="no">✗✗</span></td><td class="num">$0.125</td></tr>
+<tr><td class="mono">d3c59ab0</td><td>T2</td><td>Transferred to a different department</td><td class="num">159,115</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="ok">✓</span><span class="no">✗</span><span class="ok">✓</span></td><td class="num">$0.113</td></tr>
+<tr><td class="mono">28daa975</td><td>T2</td><td>Driving licence suspended</td><td class="num">153,655</td><td class="dims"><span class="no">✗✗✗</span></td><td class="dims"><span class="no">✗</span><span class="ok">✓✓</span></td><td class="num">$0.126</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">The "hidden change" column paraphrases each scenario's <code>explanation</code> field from the STALE dataset (CC BY 4.0).</p>
+</section>
+
+<section>
+  <h2>How we got here: the pilot iterations</h2>
+  <p class="note">Each pilot ran the same 2 scenarios (one per type). Each fix is now part of the build plan.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>#</th><th>What changed</th><th>What we saw</th><th class="num">Cost</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>First version: Lightning summarises the whole history in one call</td><td>The memory step ignored the instruction and continued the last chat in the history ("here is your spreadsheet template")</td><td class="num">$0.119</td></tr>
+      <tr><td>2</td><td>Instruction moved after the history</td><td>The task was followed, but Lightning wrote out its thinking and ran out of space before the late sessions</td><td class="num">$0.127</td></tr>
+      <tr><td>3</td><td>Facts extracted one session at a time</td><td>The same problem inside each small call: thinking text filled the output</td><td class="num">$0.284</td></tr>
+      <tr><td>—</td><td>Diagnostics: re-read the two key sessions; tried two ways to switch thinking off</td><td><code>enable_thinking=false</code> gives a clean 2-line list in 28 tokens; the "low effort" setting did not help</td><td class="num">≈$0.001</td></tr>
+      <tr><td>4</td><td>Thinking off on every call</td><td>Ours: "is it still true?" 2/2 vs 0/2. Stale-premise questions still 0/2 for both</td><td class="num">$0.127</td></tr>
+      <tr><td>5</td><td>Explicit 3-step premise check for the answer</td><td>Memory contained both changes, but Super picked an older "most recent" fact out of a 41,000-character list</td><td class="num">$0.126</td></tr>
+      <tr><td>6</td><td>Added a change-finding pass with Super, thinking off</td><td>Noisy: listed "got a new phone" as a change and missed both real ones</td><td class="num">$0.141</td></tr>
+      <tr><td>—</td><td>Diagnostic: the same change-finding task given to Ultra with thinking on</td><td>Found both: "work hours changed from 8–4 to late shift noon–8" and "legal name change makes the union card outdated"</td><td class="num">$0.088</td></tr>
+      <tr><td>7</td><td>Intended: Ultra for change-finding. <b>The edit failed (0 matches) and the run used pilot 6's code.</b></td><td>The same code gave different grades from pilot 6: grading noise is real at n=2</td><td class="num">$0.143</td></tr>
+      <tr><td>—</td><td>Edit fixed (4 of 4 replacements confirmed), then the full run</td><td>The results above</td><td class="num">$2.394</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Credits spent</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Item</th><th class="num">Calls (approx.)</th><th class="num">Cost</th></tr></thead>
+    <tbody>
+      <tr><td>Pilots 1–7 (2 scenarios each)</td><td class="num">≈ 1,000</td><td class="num">$1.067</td></tr>
+      <tr><td>Diagnostics (session re-reads, thinking switch, Ultra change-finding test)</td><td class="num">6</td><td class="num">≈ $0.09</td></tr>
+      <tr><td>Full run, 20 scenarios, both conditions, graded</td><td class="num">≈ 1,200</td><td class="num">$2.394</td></tr>
+      <tr class="hi"><td><b>Total for K0</b></td><td class="num"></td><td class="num"><b>≈ $3.55</b></td></tr>
+      <tr><td>Average per scenario, full run</td><td class="num"></td><td class="num">$0.120</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="note">
+    <li>Costs are computed from each call's reported token usage, at list prices from models.dev (third-party): Lightning $0.06 in / $0.24 out, Super $0.30 / $0.90, Ultra $1 / $3 per million tokens. The Nebius console bill is the final word.</li>
+    <li>Call counts are estimates: about 50 extraction calls per scenario plus 6–9 answer and grading calls.</li>
+    <li>Spent on the Nebius key only. The Meta key was not used.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>What this does and doesn't show</h2>
+  <ul>
+    <li><b>Shows:</b> on Nemotron, a memory that records dated facts and uses Ultra's reasoning to find what changed beats reading the raw history. 0 → 8 of 20 on stale premises, 10.0% → 48.3% overall.</li>
+    <li><b>Doesn't show:</b> a number comparable to the paper's table. The grader differs (Ultra vs Gemini-3.1-flash-lite) and the sample is 20 of 400, run once.</li>
+    <li><b>Noise:</b> identical code gave different grades on back-to-back pilot runs. The measured run (task T9) uses 100 scenarios.</li>
+    <li><b>Still behind the authors' system:</b> CUPMem reports 78% / 75% on stale premises. Ours is a crude first pipeline, and the build adds write-time invalidation (each new fact checked against related old ones).</li>
+    <li><b>Where it misses:</b> 4 scenarios failed every question, mostly changes that only hold implicitly (time zone, screen-time habit, residency).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Files and credits</h2>
+  <ul class="note">
+    <li>Code and raw results: <code>docs/research/nebius-k0/k0.py</code>, <code>k0_full20.jsonl</code>, <code>RESULT.md</code> (repo <code>physical-agent-runtime</code>).</li>
+    <li>STALE benchmark: Hanxiang Chao, Yihan Bai, Rui Sheng, Tianle Li and Yushi Sun, "STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?", arXiv 2605.06527, 7 May 2026. Code at github.com/icedreamc/STALE (MIT). Data at huggingface.co/datasets/STALEproj/STALE (CC BY 4.0), including distractor sessions derived from LongMemEval (MIT).</li>
+    <li>CUPMem, the STALE authors' memory system, is credited for the idea of write-time invalidation. No code was copied.</li>
+  </ul>
+</section>
+
+</div>

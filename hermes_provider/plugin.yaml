@@ -1,0 +1,3 @@
+name: entorhinal
+version: 0.1.0
+description: "Notices when a new fact makes an old one untrue; shows the agent any stale premise in the user's question."

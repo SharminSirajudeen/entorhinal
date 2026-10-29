@@ -1,0 +1,302 @@
+{
+  "uid": "7d6f2e0b-b6ab-46ef-a594-268162854be7",
+  "sample_index": 1,
+  "session_mode": "full",
+  "session_count": 50,
+  "relevant_session_index": [
+    7,
+    33
+  ],
+  "data_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/data/k0_20_MAIN.json",
+  "output_dir": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/cup_runs10/idx_1/20261028_061341",
+  "embedding_model_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/cup_mem/models/all-MiniLM-L6-v2",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "wire_api": "chat",
+  "loaded_env_files": [
+    "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/STALE/.env"
+  ],
+  "answers": {
+    "dim1_query": "The user's previous identification as Anglican is no longer safe to assume; attending Anglican services was noted as a past routine but is now indicated as outdated, with no current evidence affirming Anglican identification.",
+    "dim2_query": "I cannot recommend a weekly schedule of services and devotional practices because I lack current confirmation that you identify as Anglican and regularly attend services. The only specific information available is that your parish’s holy hour occurs only on Thursdays at 7pm with Benediction. Without knowing your current religious affiliation, attendance habits, or access to other services, any schedule would be based on outdated assumptions.",
+    "dim3_query": "Your previous assumptions about your schedule being too tight for worship may no longer hold—current grounding shows attending Anglican services is a consistent part of your routine. However, to suggest a practical weekly schedule and preparation steps, I need clarity on: when your main weekly worship occurs, what your current weekday availability looks like, and any standing commitments that affect your time. Without this, I cannot safely recommend a plan."
+  },
+  "verdicts": {
+    "dim1_query": "OUTDATED",
+    "dim2_query": "OUTDATED",
+    "dim3_query": "OUTDATED"
+  },
+  "usage_summary": {
+    "total_calls": 560,
+    "cache_hits": 5,
+    "cache_misses": 555,
+    "logical_usage": {
+      "prompt_tokens": 1403496,
+      "completion_tokens": 80519,
+      "total_tokens": 1484015
+    },
+    "billed_usage": {
+      "prompt_tokens": 1396175,
+      "completion_tokens": 78773,
+      "total_tokens": 1474948
+    },
+    "by_phase": {
+      "session_chunker": {
+        "calls": 50,
+        "cache_hits": 0,
+        "cache_misses": 50,
+        "logical_usage": {
+          "prompt_tokens": 105255,
+          "completion_tokens": 12729,
+          "total_tokens": 117984
+        },
+        "billed_usage": {
+          "prompt_tokens": 105255,
+          "completion_tokens": 12729,
+          "total_tokens": 117984
+        }
+      },
+      "delta_extractor": {
+        "calls": 37,
+        "cache_hits": 0,
+        "cache_misses": 37,
+        "logical_usage": {
+          "prompt_tokens": 140358,
+          "completion_tokens": 6099,
+          "total_tokens": 146457
+        },
+        "billed_usage": {
+          "prompt_tokens": 140358,
+          "completion_tokens": 6099,
+          "total_tokens": 146457
+        }
+      },
+      "update_judge": {
+        "calls": 52,
+        "cache_hits": 0,
+        "cache_misses": 52,
+        "logical_usage": {
+          "prompt_tokens": 144859,
+          "completion_tokens": 3820,
+          "total_tokens": 148679
+        },
+        "billed_usage": {
+          "prompt_tokens": 144859,
+          "completion_tokens": 3820,
+          "total_tokens": 148679
+        }
+      },
+      "bucket_bridge_proposer": {
+        "calls": 35,
+        "cache_hits": 0,
+        "cache_misses": 35,
+        "logical_usage": {
+          "prompt_tokens": 62851,
+          "completion_tokens": 3930,
+          "total_tokens": 66781
+        },
+        "billed_usage": {
+          "prompt_tokens": 62851,
+          "completion_tokens": 3930,
+          "total_tokens": 66781
+        }
+      },
+      "latent_invalidation_proposer": {
+        "calls": 122,
+        "cache_hits": 0,
+        "cache_misses": 122,
+        "logical_usage": {
+          "prompt_tokens": 430418,
+          "completion_tokens": 25071,
+          "total_tokens": 455489
+        },
+        "billed_usage": {
+          "prompt_tokens": 430418,
+          "completion_tokens": 25071,
+          "total_tokens": 455489
+        }
+      },
+      "invalidation_judge": {
+        "calls": 60,
+        "cache_hits": 0,
+        "cache_misses": 60,
+        "logical_usage": {
+          "prompt_tokens": 191438,
+          "completion_tokens": 5407,
+          "total_tokens": 196845
+        },
+        "billed_usage": {
+          "prompt_tokens": 191438,
+          "completion_tokens": 5407,
+          "total_tokens": 196845
+        }
+      },
+      "stale_support_judge": {
+        "calls": 173,
+        "cache_hits": 0,
+        "cache_misses": 173,
+        "logical_usage": {
+          "prompt_tokens": 154619,
+          "completion_tokens": 13825,
+          "total_tokens": 168444
+        },
+        "billed_usage": {
+          "prompt_tokens": 154619,
+          "completion_tokens": 13825,
+          "total_tokens": 168444
+        }
+      },
+      "query_parser": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 4493,
+          "completion_tokens": 1166,
+          "total_tokens": 5659
+        },
+        "billed_usage": {
+          "prompt_tokens": 4493,
+          "completion_tokens": 1166,
+          "total_tokens": 5659
+        }
+      },
+      "premise_verifier": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 56692,
+          "completion_tokens": 1172,
+          "total_tokens": 57864
+        },
+        "billed_usage": {
+          "prompt_tokens": 56692,
+          "completion_tokens": 1172,
+          "total_tokens": 57864
+        }
+      },
+      "query_lane_filter": {
+        "calls": 14,
+        "cache_hits": 5,
+        "cache_misses": 9,
+        "logical_usage": {
+          "prompt_tokens": 20336,
+          "completion_tokens": 4916,
+          "total_tokens": 25252
+        },
+        "billed_usage": {
+          "prompt_tokens": 13015,
+          "completion_tokens": 3170,
+          "total_tokens": 16185
+        }
+      },
+      "premise_verifier_with_evidence": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 72557,
+          "completion_tokens": 1361,
+          "total_tokens": 73918
+        },
+        "billed_usage": {
+          "prompt_tokens": 72557,
+          "completion_tokens": 1361,
+          "total_tokens": 73918
+        }
+      },
+      "answer_composer": {
+        "calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "logical_usage": {
+          "prompt_tokens": 7318,
+          "completion_tokens": 421,
+          "total_tokens": 7739
+        },
+        "billed_usage": {
+          "prompt_tokens": 7318,
+          "completion_tokens": 421,
+          "total_tokens": 7739
+        }
+      },
+      "action_grounding_resolver": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 8151,
+          "completion_tokens": 453,
+          "total_tokens": 8604
+        },
+        "billed_usage": {
+          "prompt_tokens": 8151,
+          "completion_tokens": 453,
+          "total_tokens": 8604
+        }
+      },
+      "constraint_builder": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 4151,
+          "completion_tokens": 149,
+          "total_tokens": 4300
+        },
+        "billed_usage": {
+          "prompt_tokens": 4151,
+          "completion_tokens": 149,
+          "total_tokens": 4300
+        }
+      }
+    },
+    "by_query_label": {
+      "dim1_query": {
+        "calls": 5,
+        "cache_hits": 0,
+        "cache_misses": 5,
+        "logical_usage": {
+          "prompt_tokens": 41995,
+          "completion_tokens": 1180,
+          "total_tokens": 43175
+        },
+        "billed_usage": {
+          "prompt_tokens": 41995,
+          "completion_tokens": 1180,
+          "total_tokens": 43175
+        }
+      },
+      "dim2_query": {
+        "calls": 6,
+        "cache_hits": 0,
+        "cache_misses": 6,
+        "logical_usage": {
+          "prompt_tokens": 53297,
+          "completion_tokens": 1395,
+          "total_tokens": 54692
+        },
+        "billed_usage": {
+          "prompt_tokens": 53297,
+          "completion_tokens": 1395,
+          "total_tokens": 54692
+        }
+      },
+      "dim3_query": {
+        "calls": 6,
+        "cache_hits": 0,
+        "cache_misses": 6,
+        "logical_usage": {
+          "prompt_tokens": 58070,
+          "completion_tokens": 2147,
+          "total_tokens": 60217
+        },
+        "billed_usage": {
+          "prompt_tokens": 58070,
+          "completion_tokens": 2147,
+          "total_tokens": 60217
+        }
+      }
+    }
+  }
+}

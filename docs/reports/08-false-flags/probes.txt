@@ -1,0 +1,11 @@
+{"probe": 0, "facts": 6, "stale": [], "flagged": []}
+{"probe": 1, "facts": 3, "stale": [], "flagged": []}
+{"probe": 2, "facts": 4, "stale": [], "flagged": []}
+{"probe": 3, "facts": 5, "stale": [], "flagged": []}
+{"probe": 4, "facts": 3, "stale": ["s0f1"], "flagged": []}
+{"probe": 5, "facts": 4, "stale": [], "flagged": []}
+{"probe": 6, "facts": 3, "stale": [], "flagged": []}
+{"probe": 7, "facts": 4, "stale": [], "flagged": []}
+{"probe": 8, "facts": 4, "stale": [], "flagged": []}
+{"probe": 9, "facts": 3, "stale": [], "flagged": []}
+false flags: 1 of 10 probes; spend $0.0153

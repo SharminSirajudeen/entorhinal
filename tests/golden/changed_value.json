@@ -1,0 +1,44 @@
+{
+ "_rule": "Expected values are derived by hand. 'stale': a stale fact whose subject/attribute/value contains any 'old' string, invalidated_by an active fact containing any 'by' string (case-insensitive). 'active': each string is found in some active fact. 'premise_flagged': whether the premise report flags anything. 'answer_has': each string appears in the answer.",
+ "sessions": [
+  {
+   "idx": 0,
+   "time": "2026-01-10 09:00",
+   "turns": [
+    {
+     "role": "user",
+     "content": "I live in Dubai, in a flat near the Marina."
+    }
+   ]
+  },
+  {
+   "idx": 1,
+   "time": "2026-04-02 20:15",
+   "turns": [
+    {
+     "role": "user",
+     "content": "We finally moved to Abu Dhabi last week, the new place is near Corniche."
+    }
+   ]
+  }
+ ],
+ "question": "What's the weather like where I live?",
+ "expected": {
+  "stale": [
+   {
+    "old": [
+     "dubai"
+    ],
+    "by": [
+     "abu dhabi"
+    ]
+   }
+  ],
+  "active": [
+   "abu dhabi"
+  ],
+  "answer_has": [
+   "Abu Dhabi"
+  ]
+ }
+}

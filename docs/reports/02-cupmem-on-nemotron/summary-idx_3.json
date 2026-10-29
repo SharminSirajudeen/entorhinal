@@ -1,0 +1,302 @@
+{
+  "uid": "f3259991-79c1-445f-8421-42f9e9fcb78a",
+  "sample_index": 3,
+  "session_mode": "full",
+  "session_count": 50,
+  "relevant_session_index": [
+    9,
+    34
+  ],
+  "data_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/data/k0_20_MAIN.json",
+  "output_dir": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/cup_runs10/idx_3/20261028_061341",
+  "embedding_model_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/cup_mem/models/all-MiniLM-L6-v2",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "wire_api": "chat",
+  "loaded_env_files": [
+    "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/STALE/.env"
+  ],
+  "answers": {
+    "dim1_query": "No, the user’s main active project no longer centers on reorganizing their digital file structure; that focus is outdated and has been replaced by other active priorities.",
+    "dim2_query": "Your current focus appears to have shifted away from digital file reorganization toward social media engagement, so I cannot provide a step-by-step plan based on the assumption that you are actively mid-reorganization. Before proceeding, please clarify whether you still wish to resume or complete the file reorganization this week, and share any existing progress, preferred folder conventions, or time constraints so I can offer a safe, grounded suggestion.",
+    "dim3_query": "I can't determine what you should set up for tomorrow without knowing what you're currently working on. Please clarify your current primary focus or workload so I can provide relevant guidance."
+  },
+  "verdicts": {
+    "dim1_query": "OUTDATED",
+    "dim2_query": "OUTDATED",
+    "dim3_query": "UNRESOLVED"
+  },
+  "usage_summary": {
+    "total_calls": 516,
+    "cache_hits": 7,
+    "cache_misses": 509,
+    "logical_usage": {
+      "prompt_tokens": 1218013,
+      "completion_tokens": 78174,
+      "total_tokens": 1296187
+    },
+    "billed_usage": {
+      "prompt_tokens": 1207560,
+      "completion_tokens": 75702,
+      "total_tokens": 1283262
+    },
+    "by_phase": {
+      "session_chunker": {
+        "calls": 50,
+        "cache_hits": 0,
+        "cache_misses": 50,
+        "logical_usage": {
+          "prompt_tokens": 104109,
+          "completion_tokens": 13343,
+          "total_tokens": 117452
+        },
+        "billed_usage": {
+          "prompt_tokens": 104109,
+          "completion_tokens": 13343,
+          "total_tokens": 117452
+        }
+      },
+      "delta_extractor": {
+        "calls": 37,
+        "cache_hits": 0,
+        "cache_misses": 37,
+        "logical_usage": {
+          "prompt_tokens": 97900,
+          "completion_tokens": 6563,
+          "total_tokens": 104463
+        },
+        "billed_usage": {
+          "prompt_tokens": 97900,
+          "completion_tokens": 6563,
+          "total_tokens": 104463
+        }
+      },
+      "update_judge": {
+        "calls": 52,
+        "cache_hits": 0,
+        "cache_misses": 52,
+        "logical_usage": {
+          "prompt_tokens": 132240,
+          "completion_tokens": 4190,
+          "total_tokens": 136430
+        },
+        "billed_usage": {
+          "prompt_tokens": 132240,
+          "completion_tokens": 4190,
+          "total_tokens": 136430
+        }
+      },
+      "bucket_bridge_proposer": {
+        "calls": 34,
+        "cache_hits": 0,
+        "cache_misses": 34,
+        "logical_usage": {
+          "prompt_tokens": 60688,
+          "completion_tokens": 3861,
+          "total_tokens": 64549
+        },
+        "billed_usage": {
+          "prompt_tokens": 60688,
+          "completion_tokens": 3861,
+          "total_tokens": 64549
+        }
+      },
+      "latent_invalidation_proposer": {
+        "calls": 116,
+        "cache_hits": 0,
+        "cache_misses": 116,
+        "logical_usage": {
+          "prompt_tokens": 378829,
+          "completion_tokens": 23690,
+          "total_tokens": 402519
+        },
+        "billed_usage": {
+          "prompt_tokens": 378829,
+          "completion_tokens": 23690,
+          "total_tokens": 402519
+        }
+      },
+      "invalidation_judge": {
+        "calls": 54,
+        "cache_hits": 0,
+        "cache_misses": 54,
+        "logical_usage": {
+          "prompt_tokens": 154632,
+          "completion_tokens": 5099,
+          "total_tokens": 159731
+        },
+        "billed_usage": {
+          "prompt_tokens": 154632,
+          "completion_tokens": 5099,
+          "total_tokens": 159731
+        }
+      },
+      "stale_support_judge": {
+        "calls": 144,
+        "cache_hits": 0,
+        "cache_misses": 144,
+        "logical_usage": {
+          "prompt_tokens": 134088,
+          "completion_tokens": 11812,
+          "total_tokens": 145900
+        },
+        "billed_usage": {
+          "prompt_tokens": 134088,
+          "completion_tokens": 11812,
+          "total_tokens": 145900
+        }
+      },
+      "query_parser": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 4498,
+          "completion_tokens": 979,
+          "total_tokens": 5477
+        },
+        "billed_usage": {
+          "prompt_tokens": 4498,
+          "completion_tokens": 979,
+          "total_tokens": 5477
+        }
+      },
+      "premise_verifier": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 51656,
+          "completion_tokens": 1516,
+          "total_tokens": 53172
+        },
+        "billed_usage": {
+          "prompt_tokens": 51656,
+          "completion_tokens": 1516,
+          "total_tokens": 53172
+        }
+      },
+      "query_lane_filter": {
+        "calls": 14,
+        "cache_hits": 7,
+        "cache_misses": 7,
+        "logical_usage": {
+          "prompt_tokens": 20906,
+          "completion_tokens": 4944,
+          "total_tokens": 25850
+        },
+        "billed_usage": {
+          "prompt_tokens": 10453,
+          "completion_tokens": 2472,
+          "total_tokens": 12925
+        }
+      },
+      "premise_verifier_with_evidence": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 67931,
+          "completion_tokens": 1430,
+          "total_tokens": 69361
+        },
+        "billed_usage": {
+          "prompt_tokens": 67931,
+          "completion_tokens": 1430,
+          "total_tokens": 69361
+        }
+      },
+      "answer_composer": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 4851,
+          "completion_tokens": 273,
+          "total_tokens": 5124
+        },
+        "billed_usage": {
+          "prompt_tokens": 4851,
+          "completion_tokens": 273,
+          "total_tokens": 5124
+        }
+      },
+      "constraint_builder": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 2998,
+          "completion_tokens": 215,
+          "total_tokens": 3213
+        },
+        "billed_usage": {
+          "prompt_tokens": 2998,
+          "completion_tokens": 215,
+          "total_tokens": 3213
+        }
+      },
+      "action_grounding_resolver": {
+        "calls": 1,
+        "cache_hits": 0,
+        "cache_misses": 1,
+        "logical_usage": {
+          "prompt_tokens": 2687,
+          "completion_tokens": 259,
+          "total_tokens": 2946
+        },
+        "billed_usage": {
+          "prompt_tokens": 2687,
+          "completion_tokens": 259,
+          "total_tokens": 2946
+        }
+      }
+    },
+    "by_query_label": {
+      "dim1_query": {
+        "calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "logical_usage": {
+          "prompt_tokens": 38084,
+          "completion_tokens": 1476,
+          "total_tokens": 39560
+        },
+        "billed_usage": {
+          "prompt_tokens": 38084,
+          "completion_tokens": 1476,
+          "total_tokens": 39560
+        }
+      },
+      "dim2_query": {
+        "calls": 5,
+        "cache_hits": 0,
+        "cache_misses": 5,
+        "logical_usage": {
+          "prompt_tokens": 46561,
+          "completion_tokens": 1689,
+          "total_tokens": 48250
+        },
+        "billed_usage": {
+          "prompt_tokens": 46561,
+          "completion_tokens": 1689,
+          "total_tokens": 48250
+        }
+      },
+      "dim3_query": {
+        "calls": 6,
+        "cache_hits": 0,
+        "cache_misses": 6,
+        "logical_usage": {
+          "prompt_tokens": 49976,
+          "completion_tokens": 1507,
+          "total_tokens": 51483
+        },
+        "billed_usage": {
+          "prompt_tokens": 49976,
+          "completion_tokens": 1507,
+          "total_tokens": 51483
+        }
+      }
+    }
+  }
+}

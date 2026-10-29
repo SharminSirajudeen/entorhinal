@@ -1,0 +1,130 @@
+{
+ "_rule": "Expected values are derived by hand. 'stale': a stale fact whose subject/attribute/value contains any 'old' string, invalidated_by an active fact containing any 'by' string (case-insensitive). 'active': each string is found in some active fact. 'premise_flagged': whether the premise report flags anything. 'answer_has': each string appears in the answer.",
+ "_source": "STALE (arXiv 2605.06527; Chao, Bai, Sheng, Li, Sun), huggingface.co/datasets/STALEproj/STALE, CC BY 4.0. Scenario f40ff9ce, its two relevant sessions only (original indices 12 and 36, re-indexed 0 and 1); the 48 distractor sessions are omitted. The baseline pilot passed this scenario.",
+ "instance": {
+  "uid": "f40ff9ce-1656-412b-8795-a51bcc862eb3",
+  "type": "T1",
+  "M_old": "I keep pretty standard hours, so I'm typically working from eight in the morning until four in the afternoon on weekdays.",
+  "M_new": "For the next few months, I’ll be on the late shift most days—usually starting around noon and wrapping up close to eight in the evening.",
+  "explanation": "Routine.work_hours has changed to approximately 12:00-20:00 on weekdays.",
+  "probing_queries": {
+   "dim1_query": "Based on the conversation history, does the user still typically work from eight in the morning until four in the afternoon on weekdays?",
+   "dim2_query": "Based on the conversation history, since the user works a standard 8 a.m. to 4 p.m. weekday schedule, can you suggest an ideal morning routine and the best time to schedule appointments before work?",
+   "dim3_query": "I’m trying to plan my weekday errands and social plans for the next few months—what time windows would you recommend for booking appointments, exercising, and meeting friends so it doesn’t conflict with my usual workday?"
+  },
+  "haystack_session": [
+   [
+    {
+     "role": "user",
+     "content": "I’m trying to get better at planning my days so I don’t feel like I’m constantly reacting to everything—do you have a good approach for building a realistic daily routine (work, errands, meals, and downtime) that actually sticks?"
+    },
+    {
+     "role": "assistant",
+     "content": "A routine usually sticks when it’s built around how your days actually unfold, not how you wish they would. A simple way to start is to anchor your day with just a few fixed points, like when you wake up, eat, and wind down for the night. Once those are set, you can place your most important work tasks in the part of the day when you naturally have the most energy, and leave less demanding tasks for the times when your focus dips.\n\nIt also helps to leave intentional gaps. Instead of scheduling every minute, block small pockets of unscheduled time so you can handle surprises without feeling derailed. Treat errands the same way you’d treat meetings by giving them a defined window, and make meals and breaks non‑negotiable.\n\nThe last piece is reviewing how the day went. A quick check-in at the end of the day—what worked, what felt rushed, what can move—lets you adjust without throwing the whole routine out. The goal isn’t perfection, just creating a rhythm that supports you rather than drains you."
+    },
+    {
+     "role": "user",
+     "content": "Could you lay out a concrete example schedule for a weekday that includes a morning routine, focused work blocks, lunch, a short errand window, exercise, dinner, and a wind-down period—plus how much buffer time you’d build in?"
+    },
+    {
+     "role": "assistant",
+     "content": "Here’s one way a weekday could flow, written out like a story rather than a list so it’s easier to picture.\n\nYou might start the day around 7:00 with a calm morning routine—wake up, get ready, eat something, and have a few minutes to set your intentions for the day. By about 8:00 you ease into your first focused work block, keeping it distraction‑free until roughly 10:00. After a short reset, you move into a second work block that carries you to lunch around noon. Giving yourself a real break here—maybe thirty to forty‑five minutes—helps the afternoon feel less heavy.\n\nEarly afternoon, maybe from 1:00 to 2:00, becomes a good time for small tasks and a quick errand if you need one. Once that’s handled, you settle into one more focused stretch of work until about 4:00. When you wrap up, you give yourself a little buffer to transition before exercising around 4:30 or 5:00. Afterward, dinner fits comfortably around 6:00 or 6:30, followed by unstructured downtime so the evening doesn’t feel rigid.\n\nA simple wind‑down can begin around 9:00, letting you slow your mind and get ready for bed. Between all these pieces, it helps to leave ten to fifteen minutes of breathing room when you switch activities so the day doesn’t feel like one continuous sprint."
+    },
+    {
+     "role": "user",
+     "content": "Can you rewrite that as a clear time-blocked schedule (like 7:00–7:30, etc.) for a typical weekday, and include specific buffer blocks labeled “buffer” so I can see where the slack is?"
+    },
+    {
+     "role": "assistant",
+     "content": "Here’s a clean, time‑blocked outline you can read straight down like a timetable, with the buffer periods clearly marked:\n\n7:00–7:30 Morning routine (wake up, get ready)  \n7:30–8:00 Breakfast and a quick plan for the day  \n8:00–10:00 Focused work block  \n10:00–10:15 Buffer  \n10:15–12:00 Focused work block  \n12:00–12:45 Lunch  \n12:45–1:00 Buffer  \n1:00–2:00 Light tasks and a short errand window  \n2:00–4:00 Focused work block  \n4:00–4:15 Buffer  \n4:15–5:15 Exercise  \n5:15–6:00 Buffer and transition to evening  \n6:00–7:00 Dinner  \n7:00–9:00 Downtime  \n9:00–10:00 Wind‑down routine before bed"
+    },
+    {
+     "role": "user",
+     "content": "I keep pretty standard hours, so I'm typically working from eight in the morning until four in the afternoon on weekdays—could you adjust that time-blocked schedule to fit that exactly, and keep the “buffer” blocks labeled so I can see where the slack is?"
+    },
+    {
+     "role": "assistant",
+     "content": "Here’s the same style of schedule, but shaped around an 8:00–4:00 workday:\n\n7:00–7:30 Morning routine  \n7:30–8:00 Breakfast and settle in  \n\n8:00–10:00 Focused work block  \n10:00–10:15 Buffer  \n10:15–12:00 Focused work block  \n12:00–12:45 Lunch  \n12:45–1:00 Buffer  \n1:00–3:30 Focused work block  \n3:30–4:00 Light tasks and wrap‑up  \n\n4:00–4:15 Buffer  \n4:15–5:15 Exercise  \n5:15–6:00 Buffer and transition to evening  \n6:00–7:00 Dinner  \n7:00–9:00 Downtime  \n9:00–10:00 Wind‑down routine"
+    }
+   ],
+   [
+    {
+     "role": "user",
+     "content": "Can you help me figure out a better weekly routine and maybe a meal/workout plan that actually fits my schedule? For the next few months, I’ll be on the late shift most days—usually starting around noon and wrapping up close to eight in the evening. I’m struggling with when to sleep, when to eat, and how to avoid just snacking late at night, and I’d love something practical I can stick to."
+    },
+    {
+     "role": "assistant",
+     "content": "Sure, I can help you shape a routine that fits a noon‑to‑8 p.m. schedule without feeling rigid or overwhelming.\n\nA rhythm that works well for late‑shift days is to treat your mornings as your “prime time” and keep evenings calm and light. A lot of people end up drifting into late‑night snacking simply because they’re overstimulated or under‑fed earlier, so the goal is to front‑load real meals and make your post‑shift hours wind‑down time.\n\nA practical daily flow could look like this: wake sometime between 7:30 and 8:30, have a real breakfast within an hour, and place your workout right after breakfast while you’re still fresh. That gets your movement done before work can drain you. A mid‑morning or early‑lunch meal around 11 is a good “fuel up before the shift,” so you don’t walk into your job already hungry. During your shift, plan on one solid meal around 3 or 4 and then a light snack only if you need it. When you get home around 8:30 or 9, keep food simple and small—something like yogurt, fruit, a small wrap, or a protein smoothie—enough to take the edge off but not enough to keep you awake.\n\nFor meals, you can keep it easy: breakfast could rotate between eggs and toast, oatmeal with fruit, or a smoothie with protein. Your mid‑day meal can be a simple bowl—rice or quinoa, a protein like chicken or tofu, and some vegetables. Your on‑shift meal can be leftovers or a sandwich with something hearty like hummus, turkey, or beans. Evening snacks should be light and predictable so you’re not tempted to rummage: yogurt, fruit, popcorn, or a small protein shake all work well.\n\nFor workouts, aim for short and consistent rather than heroic. A 20‑ to 30‑minute session after breakfast is enough. Three days of strength training and one or two days of light cardio—like brisk walking or cycling—will keep your energy steady without making you sore for work.\n\nFor bedtime, try to wind down by 10:30 and be asleep by 11 or so. That still gives you plenty of rest and avoids the late‑night grazing window. If you feel hungry close to bedtime, give yourself a go‑to option like a banana or a small yogurt so it never turns into a binge.\n\nIf you want, I can help customize this further around your specific goals or any foods you prefer."
+    },
+    {
+     "role": "user",
+     "content": "Can you turn that into a specific weekly schedule (Mon–Sun) with exact meal times and a simple workout plan? Also, I usually have a 30–45 minute commute each way, and I’m not sure if it’s better for me to work out in the morning or after I get home."
+    },
+    {
+     "role": "assistant",
+     "content": "Here’s a simple, concrete weekly routine that fits a noon–8 p.m. shift plus your commute. I’ll keep it consistent across all seven days so it’s easy to follow, and you can tweak it as needed.\n\nYour commute means a morning workout is almost always easier. After work, you’ll be tired, hungry, and it’ll be close to 9 p.m. by the time you’re home, which makes exercise feel like a chore and pushes bedtime later. Morning workouts let you finish before the day gets busy and keep your evenings calm so you don’t slide into late‑night snacking.\n\nHere’s how a typical day can run, Monday through Sunday:\n\nWake up around 7:45. Eat breakfast by 8:15—something steady like eggs and toast, oatmeal with fruit, or a smoothie with protein. Do your workout from about 8:45 to 9:15 or 9:30. Shower, get ready, and leave for work around 10:30 or 11, depending on your commute.\n\nHave an early lunch at 11:15 or 11:30 before you leave. When you’re at work, have your main “shift meal” around 3:30 or 4—leftovers, a grain‑and‑protein bowl, or a good sandwich. If you get hungry again around 6 or 6:30, keep it light, like fruit or a yogurt you pack from home.\n\nYou’ll get home close to 8:45. Keep your evening food small and predictable, like a small wrap, a protein shake, or yogurt with berries around 9. Wind down and aim to be in bed around 10:45 and asleep by 11:15.\n\nFor workouts, keep it simple. Do strength training on Monday, Wednesday, and Friday—just 20 to 30 minutes focusing on basic moves like squats, push‑ups, rows, and core work. On Tuesday and Saturday, do something light like a 20‑minute walk or cycling session. Sunday can be an easy rest day or a gentle stretch session if that feels good.\n\nIf you want, I can adjust the timing for days off or shift changes, or build you a strength routine with specific exercises."
+    },
+    {
+     "role": "user",
+     "content": "Could you lay it out as a Mon–Sun table with the same time blocks each day (wake, breakfast, workout, leave, meals, get home, light snack, bed), and then a separate section with the exact strength workouts (sets/reps) for Mon/Wed/Fri that I can do at home with just dumbbells or bands?"
+    },
+    {
+     "role": "assistant",
+     "content": "Here’s the weekly schedule in a simple table, followed by the strength‑training plan. I’ll keep the formatting clean and easy to read.\n\nMon–Sun Schedule (same every day)\n\nTime | Activity  \n7:45 | Wake up  \n8:15 | Breakfast  \n8:45–9:15 | Workout (or light movement on non‑strength days)  \n10:30–11:00 | Leave for work  \n11:15 | Early lunch  \n3:30–4:00 | Main shift meal  \n6:00–6:30 | Optional light snack at work  \n8:45 | Get home  \n9:00 | Light evening snack  \n10:45 | Wind down  \n11:15 | Bedtime  \n\n\nStrength Workouts for Mon/Wed/Fri (dumbbells or bands)\n\nEach session is about 20–30 minutes. Rest about 60 seconds between sets.\n\nWorkout A (Monday)  \nSquats or Goblet Squats: 3×10–12  \nBent‑Over Rows (DB or band): 3×10–12  \nGlute Bridge or Hip Thrust: 3×12–15  \nOverhead Press (DB or band): 3×8–12  \nDead Bug or Plank: 3×30 seconds  \n\nWorkout B (Wednesday)  \nReverse Lunges: 3×8–10 each leg  \nChest Press (floor press with dumbbells or banded press): 3×10–12  \nRomanian Deadlift (DB or band): 3×10–12  \nLat Pulldown (band) or Band Pull‑Apart: 3×12–15  \nSide Plank: 2×20–30 seconds each side  \n\nWorkout C (Friday)  \nStep‑Ups or Split Squats: 3×8–10 each leg  \nSingle‑Arm Row: 3×10–12 each side  \nGlute Bridge March or Single‑Leg Bridge: 3×10 each side  \nArnold Press or Lateral Raises: 3×10–12  \nCore Circuit (repeat twice): 10 slow crunches, 10 leg raises, 20‑second plank  \n\nIf you want, I can also make versions of these that take exactly 20 minutes, or adjust them for any injuries or preferences."
+    },
+    {
+     "role": "user",
+     "content": "This looks good—can you tweak the schedule for weekends if I’m off work (I’m usually off Saturday and Sunday), but still keep my sleep consistent? Also, can you add a simple grocery list and 2–3 meal prep ideas that match those meal times so I’m not scrambling?"
+    },
+    {
+     "role": "assistant",
+     "content": "Here’s a clean update with weekend adjustments, plus a simple grocery list and a few meal‑prep ideas that fit your timing.\n\nWeekend schedule (Saturday and Sunday)\n\nI’m keeping your wake and sleep times the same so your body stays on rhythm, but shifting your daytime blocks since you’re off work.\n\n7:45 | Wake up  \n8:15 | Breakfast  \n8:45–9:15 | Workout (Saturday is light cardio or stretching, Sunday is rest or gentle movement)  \n10:30 | Mid‑morning break or errands  \n11:15 | Early lunch  \n3:30–4:00 | Main afternoon meal  \n6:00 | Optional light snack  \n8:00–8:30 | Relaxing evening routine  \n9:00 | Light snack if needed  \n10:45 | Wind down  \n11:15 | Bedtime  \n\nThis keeps the same eating rhythm so Monday doesn’t feel like a shock.\n\nSimple grocery list (just written as one sentence to keep things smooth)\n\nChicken breast or thighs, ground turkey or tofu, eggs, Greek yogurt, berries, bananas, mixed greens, spinach, cucumbers, cherry tomatoes, frozen veggies, rice or quinoa, oats, whole‑grain bread or wraps, hummus, black beans or chickpeas, shredded cheese, olive oil, nuts, simple seasonings like salt, pepper, garlic powder, and paprika, plus a few easy sauces like salsa or vinaigrette.\n\nMeal‑prep ideas that fit your schedule\n\nOne easy option is a big batch grain bowl: cook six servings of rice or quinoa, roast a tray of vegetables, and prep a protein like chicken, turkey, or tofu. Portion everything into containers so you can grab one for your 3:30–4:00 shift meal or have an effortless lunch before work.\n\nA second idea is breakfast jars you can make three or four at a time: overnight oats with fruit, yogurt, or a scoop of protein powder. These cover breakfast on busy mornings without thinking.\n\nA third simple prep is a set of wraps or sandwiches you make two at a time and keep in the fridge: whole‑grain wrap, hummus or cheese, turkey or beans, greens, and something crunchy like cucumbers. They travel well and fit your lighter on‑shift eating blocks.\n\nIf you want, I can tailor the meals to preferences, allergies, or calorie goals."
+    },
+    {
+     "role": "user",
+     "content": "Could you also give me a couple “default” options for that 9:00 pm light snack that won’t make me hungrier later, and a few ideas for the 6:00 pm optional snack at work that are easy to pack and not messy?"
+    },
+    {
+     "role": "assistant",
+     "content": "For the 9:00 p.m. snack, it helps to choose something small, steady, and not too sweet so it doesn’t wake your appetite back up. A couple of good defaults are a small bowl of Greek yogurt with a few berries, or a simple protein shake made with water or almond milk. Both are filling enough to take the edge off, but gentle enough that they won’t keep you up or trigger more grazing.\n\nFor the optional 6:00 p.m. work snack, the easiest choices are things you can grab with one hand and won’t leak or crumble everywhere. A banana with a mini pack of nuts works well, or a single‑serve yogurt you can eat quickly. You could also pack a cheese stick with a small handful of grapes, or bring a small container of hummus with baby carrots if you want something more savory.\n\nIf you want options that fit specific calorie targets or dietary needs, I can tailor them."
+    },
+    {
+     "role": "user",
+     "content": "Can you give me a short list of “go-to” snack combos for both 6:00 pm and 9:00 pm with rough portions (like 1 cup, 1 handful, 1 scoop), and maybe a quick rule of thumb for when I should skip the 9:00 pm snack altogether?"
+    },
+    {
+     "role": "assistant",
+     "content": "Here are a few simple go‑to combos with rough portions, written in a clean, short format.\n\nFor the 6:00 p.m. work snack, you can rely on things like a banana with a small handful of nuts, a single‑serve yogurt with a few berries mixed in, a cheese stick with a small handful of grapes, or baby carrots with two or three tablespoons of hummus.\n\nFor the 9:00 p.m. snack, stick to gentler options like half to one cup of Greek yogurt with a few berries, a small protein shake made with one scoop of protein and water or almond milk, or a small wrap with one slice of turkey and greens.\n\nA good rule of thumb for skipping the 9:00 p.m. snack is this: if your 3:30–4:00 meal and your optional 6:00 snack kept you from feeling genuinely hungry when you get home, skip it. If you’re only craving something out of habit, boredom, or the “post‑work unwind,” skip it. Eat it only when you feel actual stomach‑level hunger, not just a mental urge to nibble."
+    }
+   ]
+  ],
+  "timestamps": [
+   "2024-06-15 10:00",
+   "2024-12-13 10:00"
+  ],
+  "relevant_session_index": [
+   0,
+   1
+  ]
+ },
+ "question": "Based on the conversation history, since the user works a standard 8 a.m. to 4 p.m. weekday schedule, can you suggest an ideal morning routine and the best time to schedule appointments before work?",
+ "expected": {
+  "stale": [
+   {
+    "old": [
+     "8",
+     "eight"
+    ],
+    "by": [
+     "noon",
+     "12"
+    ]
+   }
+  ],
+  "active": [
+   "noon"
+  ],
+  "premise_flagged": true,
+  "answer_has": []
+ }
+}

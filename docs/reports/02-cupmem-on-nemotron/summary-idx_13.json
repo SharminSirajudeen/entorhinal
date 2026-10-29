@@ -1,0 +1,302 @@
+{
+  "uid": "fb5ebe60-626d-48e0-86d6-3640db53d3b4",
+  "sample_index": 13,
+  "session_mode": "full",
+  "session_count": 50,
+  "relevant_session_index": [
+    5,
+    36
+  ],
+  "data_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/data/k0_20_MAIN.json",
+  "output_dir": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/cup_runs10/idx_13/20261028_062702",
+  "embedding_model_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/cup_mem/models/all-MiniLM-L6-v2",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "wire_api": "chat",
+  "loaded_env_files": [
+    "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/STALE/.env"
+  ],
+  "answers": {
+    "dim1_query": "No, the user does not still seem to be based in Seattle. The old assumption is no longer valid because they have switched their driver’s license and voter registration after moving, which indicates relocation across state lines.",
+    "dim2_query": "I cannot suggest Seattle-specific neighborhoods because your current residence is unknown—evidence shows you switched your driver’s license and voter registration after a move, which undermines the assumption that you’re still based in Seattle. Without confirming where you now live, any neighborhood recommendations would be unfounded.",
+    "dim3_query": "Your assumption that Tuesday 7–9am is free is outdated—you attend Buddhist meditation sessions at the Dhamma Center on Tuesdays and Thursdays, which conflicts with the volunteer shift. Ongoing painting classes further suggest limited morning availability. Consider alternative volunteer times that avoid Tuesdays and Thursdays, or explore one-time/flexible opportunities instead."
+  },
+  "verdicts": {
+    "dim1_query": "OUTDATED",
+    "dim2_query": "OUTDATED",
+    "dim3_query": "OUTDATED"
+  },
+  "usage_summary": {
+    "total_calls": 515,
+    "cache_hits": 0,
+    "cache_misses": 515,
+    "logical_usage": {
+      "prompt_tokens": 1253478,
+      "completion_tokens": 76509,
+      "total_tokens": 1329987
+    },
+    "billed_usage": {
+      "prompt_tokens": 1253478,
+      "completion_tokens": 76509,
+      "total_tokens": 1329987
+    },
+    "by_phase": {
+      "session_chunker": {
+        "calls": 50,
+        "cache_hits": 0,
+        "cache_misses": 50,
+        "logical_usage": {
+          "prompt_tokens": 104679,
+          "completion_tokens": 12129,
+          "total_tokens": 116808
+        },
+        "billed_usage": {
+          "prompt_tokens": 104679,
+          "completion_tokens": 12129,
+          "total_tokens": 116808
+        }
+      },
+      "delta_extractor": {
+        "calls": 34,
+        "cache_hits": 0,
+        "cache_misses": 34,
+        "logical_usage": {
+          "prompt_tokens": 100785,
+          "completion_tokens": 5910,
+          "total_tokens": 106695
+        },
+        "billed_usage": {
+          "prompt_tokens": 100785,
+          "completion_tokens": 5910,
+          "total_tokens": 106695
+        }
+      },
+      "update_judge": {
+        "calls": 51,
+        "cache_hits": 0,
+        "cache_misses": 51,
+        "logical_usage": {
+          "prompt_tokens": 146260,
+          "completion_tokens": 3558,
+          "total_tokens": 149818
+        },
+        "billed_usage": {
+          "prompt_tokens": 146260,
+          "completion_tokens": 3558,
+          "total_tokens": 149818
+        }
+      },
+      "bucket_bridge_proposer": {
+        "calls": 32,
+        "cache_hits": 0,
+        "cache_misses": 32,
+        "logical_usage": {
+          "prompt_tokens": 57382,
+          "completion_tokens": 2754,
+          "total_tokens": 60136
+        },
+        "billed_usage": {
+          "prompt_tokens": 57382,
+          "completion_tokens": 2754,
+          "total_tokens": 60136
+        }
+      },
+      "latent_invalidation_proposer": {
+        "calls": 101,
+        "cache_hits": 0,
+        "cache_misses": 101,
+        "logical_usage": {
+          "prompt_tokens": 362802,
+          "completion_tokens": 24508,
+          "total_tokens": 387310
+        },
+        "billed_usage": {
+          "prompt_tokens": 362802,
+          "completion_tokens": 24508,
+          "total_tokens": 387310
+        }
+      },
+      "invalidation_judge": {
+        "calls": 56,
+        "cache_hits": 0,
+        "cache_misses": 56,
+        "logical_usage": {
+          "prompt_tokens": 181599,
+          "completion_tokens": 5204,
+          "total_tokens": 186803
+        },
+        "billed_usage": {
+          "prompt_tokens": 181599,
+          "completion_tokens": 5204,
+          "total_tokens": 186803
+        }
+      },
+      "stale_support_judge": {
+        "calls": 162,
+        "cache_hits": 0,
+        "cache_misses": 162,
+        "logical_usage": {
+          "prompt_tokens": 144037,
+          "completion_tokens": 12856,
+          "total_tokens": 156893
+        },
+        "billed_usage": {
+          "prompt_tokens": 144037,
+          "completion_tokens": 12856,
+          "total_tokens": 156893
+        }
+      },
+      "query_parser": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 4505,
+          "completion_tokens": 1230,
+          "total_tokens": 5735
+        },
+        "billed_usage": {
+          "prompt_tokens": 4505,
+          "completion_tokens": 1230,
+          "total_tokens": 5735
+        }
+      },
+      "premise_verifier": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 51515,
+          "completion_tokens": 1540,
+          "total_tokens": 53055
+        },
+        "billed_usage": {
+          "prompt_tokens": 51515,
+          "completion_tokens": 1540,
+          "total_tokens": 53055
+        }
+      },
+      "query_lane_filter": {
+        "calls": 13,
+        "cache_hits": 0,
+        "cache_misses": 13,
+        "logical_usage": {
+          "prompt_tokens": 18906,
+          "completion_tokens": 4694,
+          "total_tokens": 23600
+        },
+        "billed_usage": {
+          "prompt_tokens": 18906,
+          "completion_tokens": 4694,
+          "total_tokens": 23600
+        }
+      },
+      "premise_verifier_with_evidence": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 67618,
+          "completion_tokens": 1149,
+          "total_tokens": 68767
+        },
+        "billed_usage": {
+          "prompt_tokens": 67618,
+          "completion_tokens": 1149,
+          "total_tokens": 68767
+        }
+      },
+      "answer_composer": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 5532,
+          "completion_tokens": 295,
+          "total_tokens": 5827
+        },
+        "billed_usage": {
+          "prompt_tokens": 5532,
+          "completion_tokens": 295,
+          "total_tokens": 5827
+        }
+      },
+      "action_grounding_resolver": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 4478,
+          "completion_tokens": 433,
+          "total_tokens": 4911
+        },
+        "billed_usage": {
+          "prompt_tokens": 4478,
+          "completion_tokens": 433,
+          "total_tokens": 4911
+        }
+      },
+      "constraint_builder": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 3380,
+          "completion_tokens": 249,
+          "total_tokens": 3629
+        },
+        "billed_usage": {
+          "prompt_tokens": 3380,
+          "completion_tokens": 249,
+          "total_tokens": 3629
+        }
+      }
+    },
+    "by_query_label": {
+      "dim1_query": {
+        "calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "logical_usage": {
+          "prompt_tokens": 44919,
+          "completion_tokens": 1037,
+          "total_tokens": 45956
+        },
+        "billed_usage": {
+          "prompt_tokens": 44919,
+          "completion_tokens": 1037,
+          "total_tokens": 45956
+        }
+      },
+      "dim2_query": {
+        "calls": 6,
+        "cache_hits": 0,
+        "cache_misses": 6,
+        "logical_usage": {
+          "prompt_tokens": 43270,
+          "completion_tokens": 1611,
+          "total_tokens": 44881
+        },
+        "billed_usage": {
+          "prompt_tokens": 43270,
+          "completion_tokens": 1611,
+          "total_tokens": 44881
+        }
+      },
+      "dim3_query": {
+        "calls": 6,
+        "cache_hits": 0,
+        "cache_misses": 6,
+        "logical_usage": {
+          "prompt_tokens": 48839,
+          "completion_tokens": 2248,
+          "total_tokens": 51087
+        },
+        "billed_usage": {
+          "prompt_tokens": 48839,
+          "completion_tokens": 2248,
+          "total_tokens": 51087
+        }
+      }
+    }
+  }
+}

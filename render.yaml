@@ -1,0 +1,22 @@
+# The hosted demo as a free Render web service built from the Dockerfile. NEBIUS_API_KEY is entered by hand in
+# Render's dashboard when the blueprint is created (sync: false); it is never in this repo. The day's spend lives in a
+# free Key Value instance reachable only from Render's private network, so the daily cap outlives the web service's
+# sleeps (a free web service spins down after 15 idle minutes and loses its disk).
+services:
+  - type: web
+    name: entorhinal
+    runtime: docker
+    plan: free
+    envVars:
+      - key: NEBIUS_API_KEY
+        sync: false
+      - key: SPEND_URL
+        fromService:
+          type: keyvalue
+          name: entorhinal-spend
+          property: connectionString
+  - type: keyvalue
+    name: entorhinal-spend
+    plan: free
+    ipAllowList: []  # internal connections only
+    maxmemoryPolicy: noeviction

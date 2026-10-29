@@ -1,0 +1,9 @@
+cache/
+data/
+.venv/
+__pycache__/
+node_modules/
+.claude/
+memories/
+.reports/
+.pytest-tmp/

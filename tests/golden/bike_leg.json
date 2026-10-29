@@ -1,0 +1,47 @@
+{
+ "_rule": "Expected values are derived by hand. 'stale': a stale fact whose subject/attribute/value contains any 'old' string, invalidated_by an active fact containing any 'by' string (case-insensitive). 'active': each string is found in some active fact. 'premise_flagged': whether the premise report flags anything. 'answer_has': each string appears in the answer.",
+ "sessions": [
+  {
+   "idx": 0,
+   "time": "2026-03-01 08:30",
+   "turns": [
+    {
+     "role": "user",
+     "content": "I bike 10 miles to work daily, it's the best part of my morning."
+    }
+   ]
+  },
+  {
+   "idx": 1,
+   "time": "2026-03-22 19:05",
+   "turns": [
+    {
+     "role": "user",
+     "content": "Bad news: I fell on the stairs and my leg is in a cast for six weeks."
+    }
+   ]
+  }
+ ],
+ "question": "Which route should I bike tomorrow?",
+ "expected": {
+  "stale": [
+   {
+    "old": [
+     "bike",
+     "cycl"
+    ],
+    "by": [
+     "cast",
+     "leg"
+    ]
+   }
+  ],
+  "active": [
+   "cast"
+  ],
+  "premise_flagged": true,
+  "answer_has": [
+   "2026-03-22"
+  ]
+ }
+}

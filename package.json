@@ -1,0 +1,7 @@
+{
+  "name": "entorhinal-gate",
+  "private": true,
+  "devDependencies": {
+    "jscpd": "^4.0.0"
+  }
+}

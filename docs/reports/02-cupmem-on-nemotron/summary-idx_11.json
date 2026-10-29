@@ -1,0 +1,287 @@
+{
+  "uid": "16763588-459c-4dca-95ec-f7ff02c5a940",
+  "sample_index": 11,
+  "session_mode": "full",
+  "session_count": 50,
+  "relevant_session_index": [
+    5,
+    38
+  ],
+  "data_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/data/k0_20_MAIN.json",
+  "output_dir": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/cup_runs10/idx_11/20261028_062608",
+  "embedding_model_path": "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/cup_mem/models/all-MiniLM-L6-v2",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "wire_api": "chat",
+  "loaded_env_files": [
+    "/private/tmp/claude-501/-Users-sharminsirajudeen/df9eccc2-605a-483e-8ac1-75695791a5f4/scratchpad/stale/repo/STALE/.env"
+  ],
+  "answers": {
+    "dim1_query": "No, the previous preference for cycling for basically everything instead of driving is no longer valid due to a left wrist injury that makes cycling infeasible or unsafe.",
+    "dim2_query": "Your old assumption about preferring cycling for basically everything is no longer safe due to a left wrist injury that makes cycling unsafe because it requires wrist load on handlebars and braking. I cannot suggest a cycling plan while this injury persists. Please clarify your current commute mode, specific errands for the week, and whether adaptive cycling equipment or brake modifications are available to reassess safety.",
+    "dim3_query": "The situation isn't clear enough to safely lend your transit pass—your current commute method isn't confirmed, so you might still need it yourself."
+  },
+  "verdicts": {
+    "dim1_query": "OUTDATED",
+    "dim2_query": "OUTDATED",
+    "dim3_query": "UNRESOLVED"
+  },
+  "usage_summary": {
+    "total_calls": 533,
+    "cache_hits": 6,
+    "cache_misses": 527,
+    "logical_usage": {
+      "prompt_tokens": 1362844,
+      "completion_tokens": 80230,
+      "total_tokens": 1443074
+    },
+    "billed_usage": {
+      "prompt_tokens": 1354826,
+      "completion_tokens": 78206,
+      "total_tokens": 1433032
+    },
+    "by_phase": {
+      "session_chunker": {
+        "calls": 50,
+        "cache_hits": 0,
+        "cache_misses": 50,
+        "logical_usage": {
+          "prompt_tokens": 104667,
+          "completion_tokens": 14193,
+          "total_tokens": 118860
+        },
+        "billed_usage": {
+          "prompt_tokens": 104667,
+          "completion_tokens": 14193,
+          "total_tokens": 118860
+        }
+      },
+      "delta_extractor": {
+        "calls": 38,
+        "cache_hits": 0,
+        "cache_misses": 38,
+        "logical_usage": {
+          "prompt_tokens": 128131,
+          "completion_tokens": 6314,
+          "total_tokens": 134445
+        },
+        "billed_usage": {
+          "prompt_tokens": 128131,
+          "completion_tokens": 6314,
+          "total_tokens": 134445
+        }
+      },
+      "update_judge": {
+        "calls": 52,
+        "cache_hits": 0,
+        "cache_misses": 52,
+        "logical_usage": {
+          "prompt_tokens": 144834,
+          "completion_tokens": 4033,
+          "total_tokens": 148867
+        },
+        "billed_usage": {
+          "prompt_tokens": 144834,
+          "completion_tokens": 4033,
+          "total_tokens": 148867
+        }
+      },
+      "bucket_bridge_proposer": {
+        "calls": 36,
+        "cache_hits": 0,
+        "cache_misses": 36,
+        "logical_usage": {
+          "prompt_tokens": 65232,
+          "completion_tokens": 3504,
+          "total_tokens": 68736
+        },
+        "billed_usage": {
+          "prompt_tokens": 65232,
+          "completion_tokens": 3504,
+          "total_tokens": 68736
+        }
+      },
+      "latent_invalidation_proposer": {
+        "calls": 123,
+        "cache_hits": 0,
+        "cache_misses": 123,
+        "logical_usage": {
+          "prompt_tokens": 441332,
+          "completion_tokens": 27679,
+          "total_tokens": 469011
+        },
+        "billed_usage": {
+          "prompt_tokens": 441332,
+          "completion_tokens": 27679,
+          "total_tokens": 469011
+        }
+      },
+      "invalidation_judge": {
+        "calls": 64,
+        "cache_hits": 0,
+        "cache_misses": 64,
+        "logical_usage": {
+          "prompt_tokens": 215759,
+          "completion_tokens": 5578,
+          "total_tokens": 221337
+        },
+        "billed_usage": {
+          "prompt_tokens": 215759,
+          "completion_tokens": 5578,
+          "total_tokens": 221337
+        }
+      },
+      "stale_support_judge": {
+        "calls": 144,
+        "cache_hits": 0,
+        "cache_misses": 144,
+        "logical_usage": {
+          "prompt_tokens": 124562,
+          "completion_tokens": 11469,
+          "total_tokens": 136031
+        },
+        "billed_usage": {
+          "prompt_tokens": 124562,
+          "completion_tokens": 11469,
+          "total_tokens": 136031
+        }
+      },
+      "query_parser": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 4521,
+          "completion_tokens": 1083,
+          "total_tokens": 5604
+        },
+        "billed_usage": {
+          "prompt_tokens": 4521,
+          "completion_tokens": 1083,
+          "total_tokens": 5604
+        }
+      },
+      "premise_verifier": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 48112,
+          "completion_tokens": 955,
+          "total_tokens": 49067
+        },
+        "billed_usage": {
+          "prompt_tokens": 48112,
+          "completion_tokens": 955,
+          "total_tokens": 49067
+        }
+      },
+      "query_lane_filter": {
+        "calls": 12,
+        "cache_hits": 6,
+        "cache_misses": 6,
+        "logical_usage": {
+          "prompt_tokens": 16036,
+          "completion_tokens": 4048,
+          "total_tokens": 20084
+        },
+        "billed_usage": {
+          "prompt_tokens": 8018,
+          "completion_tokens": 2024,
+          "total_tokens": 10042
+        }
+      },
+      "premise_verifier_with_evidence": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 63318,
+          "completion_tokens": 951,
+          "total_tokens": 64269
+        },
+        "billed_usage": {
+          "prompt_tokens": 63318,
+          "completion_tokens": 951,
+          "total_tokens": 64269
+        }
+      },
+      "answer_composer": {
+        "calls": 3,
+        "cache_hits": 0,
+        "cache_misses": 3,
+        "logical_usage": {
+          "prompt_tokens": 3982,
+          "completion_tokens": 272,
+          "total_tokens": 4254
+        },
+        "billed_usage": {
+          "prompt_tokens": 3982,
+          "completion_tokens": 272,
+          "total_tokens": 4254
+        }
+      },
+      "constraint_builder": {
+        "calls": 2,
+        "cache_hits": 0,
+        "cache_misses": 2,
+        "logical_usage": {
+          "prompt_tokens": 2358,
+          "completion_tokens": 151,
+          "total_tokens": 2509
+        },
+        "billed_usage": {
+          "prompt_tokens": 2358,
+          "completion_tokens": 151,
+          "total_tokens": 2509
+        }
+      }
+    },
+    "by_query_label": {
+      "dim1_query": {
+        "calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "logical_usage": {
+          "prompt_tokens": 34444,
+          "completion_tokens": 931,
+          "total_tokens": 35375
+        },
+        "billed_usage": {
+          "prompt_tokens": 34444,
+          "completion_tokens": 931,
+          "total_tokens": 35375
+        }
+      },
+      "dim2_query": {
+        "calls": 5,
+        "cache_hits": 0,
+        "cache_misses": 5,
+        "logical_usage": {
+          "prompt_tokens": 42076,
+          "completion_tokens": 1394,
+          "total_tokens": 43470
+        },
+        "billed_usage": {
+          "prompt_tokens": 42076,
+          "completion_tokens": 1394,
+          "total_tokens": 43470
+        }
+      },
+      "dim3_query": {
+        "calls": 5,
+        "cache_hits": 0,
+        "cache_misses": 5,
+        "logical_usage": {
+          "prompt_tokens": 45771,
+          "completion_tokens": 1087,
+          "total_tokens": 46858
+        },
+        "billed_usage": {
+          "prompt_tokens": 45771,
+          "completion_tokens": 1087,
+          "total_tokens": 46858
+        }
+      }
+    }
+  }
+}
