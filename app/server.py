@@ -183,6 +183,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header("Content-Type", kind + "; charset=utf-8")
         self.send_header("Content-Security-Policy", CSP)
+        if kind == "application/json":  # a visitor's own data, at a URL every visitor shares: never stored by a cache
+            self.send_header("Cache-Control", "no-store")
         if self.issued:
             self.send_header("Set-Cookie", f"visitor={self.issued}; Max-Age={KEEP_SECONDS}; Path=/; HttpOnly; "
                                            "SameSite=Strict; Secure")
