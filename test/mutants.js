@@ -45,8 +45,7 @@ const SELECTED = process.env.EG_MUTANTS === 'changed' ? changedOnly() : MUTANTS;
 /* one shard: every n-th selected mutant from k, in its own copy; the control (each named test green unmutated, after its
    mutant's `before` step, since a test that needs a build is red without one) in shard 0 */
 function shard(k, n){
-  const dir = path.join(os.tmpdir(), PREFIX + k);
-  fs.mkdirSync(dir);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), PREFIX + k + '-'));
   let fails = 0;
   try {
     // Python swap: the venv is linked like node_modules; data/ (the 300 MB benchmark) and cache/ are never copied
