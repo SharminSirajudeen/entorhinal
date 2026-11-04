@@ -6,10 +6,11 @@
 //                                            list, runner or harness changed (the `live` gate: GATE_MODE=live in scripts/ci.sh)
 // The run uses every core: each shard is this file again, with its own copy of the tree.
 'use strict';
-const fs = require('fs'), os = require('os'), path = require('path');
+const fs = require('fs'), os = require('os'), path = require('path'), crypto = require('crypto');
 const { spawnSync, spawn } = require('child_process');
 const root = path.join(__dirname, '..'), LIST = 'test/mutants.list.js';
 const MUTANTS = require(path.join(root, LIST));
+const PREFIX = 'mutants-' + crypto.createHash('sha1').update(root).digest('hex').slice(0, 8) + '-';   // this checkout's shard copies
 const LIMIT = 300000;   // a runaway mutant is killed here; a shard per core runs each test about 2.5x slower than alone
 
 const count = (text, s) => text.split(s).length - 1;
@@ -44,7 +45,7 @@ const SELECTED = process.env.EG_MUTANTS === 'changed' ? changedOnly() : MUTANTS;
 /* one shard: every n-th selected mutant from k, in its own copy; the control (each named test green unmutated, after its
    mutant's `before` step, since a test that needs a build is red without one) in shard 0 */
 function shard(k, n){
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'mutants-'));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), PREFIX + k + '-'));
   let fails = 0;
   try {
     // Python swap: the venv is linked like node_modules; data/ (the 300 MB benchmark) and cache/ are never copied
@@ -65,6 +66,7 @@ if (process.env.MUTANT_SHARD){
   const [k, n] = process.env.MUTANT_SHARD.split('/').map(Number);
   process.exit(shard(k, n) ? 1 : 0);
 }
+fs.readdirSync(os.tmpdir()).filter(n => n.startsWith(PREFIX)).forEach(n => fs.rmSync(path.join(os.tmpdir(), n), { recursive:true, force:true }));
 const N = Math.max(1, Math.min(os.cpus().length, SELECTED.length || 1));
 Promise.all(Array.from({ length:N }, (_, k) => new Promise(done => {
   const c = spawn(process.execPath, [__filename], { env:Object.assign({}, process.env, { MUTANT_SHARD:k + '/' + N }) });
